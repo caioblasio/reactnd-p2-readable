@@ -3,22 +3,22 @@ const config = require('./config')
 
 let db = {}
 
-const defaultData = {
-  categories: [
+const defaultData = 
+[
       {
-        name: 'react',
+        name: 'React',
         path: 'react'
       },
       {
-        name: 'redux',
+        name: 'Redux',
         path: 'redux'
       },
       {
-        name: 'udacity',
+        name: 'Udacity',
         path: 'udacity'
       }
   ]
-}
+
 
 function getData (token) {
   //Each token has it's own copy of the DB. The token in this case is like an app id.
