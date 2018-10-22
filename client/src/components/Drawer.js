@@ -59,7 +59,7 @@ class ResponsiveDrawer extends React.Component {
             </ListItem>
           </Link>
           {categories.map(category => (
-            <Link to={category.path}>
+            <Link key={category.path} to={category.path}>
               <ListItem key={category.path} button>
                 <ListItemText primary={category.name} />
               </ListItem>

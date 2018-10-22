@@ -16,17 +16,17 @@ class Home extends Component {
         {this.props.category
           ? (category 
               ? <Fragment>
-                  <Typography variant="h3">
+                  <Typography variant="h5">
                     {category.name}
                   </Typography>
                   <PostList category={category.path} />
                 </Fragment>
-              : <Typography variant="h3">
+              : <Typography variant="h5">
                   Category not found
                 </Typography>
             )
           : <Fragment>
-              <Typography variant="h3">
+              <Typography variant="h5">
                 All Posts
               </Typography>
               <PostList/>

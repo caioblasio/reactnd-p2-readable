@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared';
+import { fetchCategories } from '../actions/categories';
 import SearchAppBar from './SearchAppBar';
 import ResponsiveDrawer from './Drawer';
 
@@ -38,11 +39,11 @@ const styles = {
 class App extends Component {
   
   componentDidMount(){
-    this.props.dispatch(handleInitialData())
+    this.props.dispatch(fetchCategories())
   }
 
   render() {
-    const { classes, isOpen, isLoading } = this.props;
+    const { classes, isOpen } = this.props;
     return (
       <div>
         <MuiThemeProvider theme={theme}>
@@ -50,24 +51,19 @@ class App extends Component {
             <Fragment>
               <CssBaseline />
               <SearchAppBar/>
-              {isLoading && <div>Loading...</div>}
-              {!isLoading &&
-                <Fragment>
-                  <ResponsiveDrawer/>
-                  <div className={`${classes.root} ${!isOpen ? classes.rootFull : ''}`}>
-                    <div className={classes.container}>
-                      <Route path='/' exact component={Home} />
-                      <Route
-                        exact
-                        path="/:category"
-                        render={props => (
-                          <Home category={props.match.params.category} />
-                        )}
-                      />
-                    </div>
-                  </div>
-                </Fragment>
-              }
+              <ResponsiveDrawer/>
+              <div className={`${classes.root} ${!isOpen ? classes.rootFull : ''}`}>
+                <div className={classes.container}>
+                  <Route path='/' exact component={Home} />
+                  <Route
+                    exact
+                    path="/:category"
+                    render={props => (
+                      <Home category={props.match.params.category} />
+                    )}
+                  />
+                </div>
+              </div>
             </Fragment>
           </Router>
         </MuiThemeProvider>
@@ -76,10 +72,9 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ drawer, loading }) {
+function mapStateToProps({ drawer }) {
   return {
-    isOpen: drawer,
-    isLoading: loading,
+    isOpen: drawer
   }
 }
 
