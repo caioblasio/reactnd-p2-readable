@@ -12,7 +12,8 @@ const defaultData = {
     category: 'react',
     voteScore: 6,
     deleted: false,
-    commentCount: 2
+    commentCount: 2,
+    summary: 'This is a sample Summary for the Udacity is the best place to learn React Post. '
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
@@ -23,7 +24,8 @@ const defaultData = {
     category: 'redux',
     voteScore: -5,
     deleted: false,
-    commentCount: 0
+    commentCount: 0,
+    summary: 'This is a sample Summary for Learn Redux in 10 minutes!'
   }
 }
 
@@ -77,7 +79,8 @@ function add (token, post) {
       category: post.category,
       voteScore: 1,
       deleted: false,
-      commentCount: 0
+      commentCount: 0,
+      summary: post.summary
     }
 
     res(posts[post.id])

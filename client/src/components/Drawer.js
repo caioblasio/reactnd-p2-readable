@@ -15,6 +15,7 @@ import NoteAdd from '@material-ui/icons/NoteAdd';
 import StarIcon from '@material-ui/icons/Star';
 
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { toggleDrawer } from '../actions/drawer';
 
 const styles = theme => ({
@@ -52,10 +53,17 @@ class ResponsiveDrawer extends React.Component {
           component="nav"
           subheader={<ListSubheader component="div">Categories</ListSubheader>}
         >
-          {categories.map(category => (
-            <ListItem key={category.path} button>
-              <ListItemText primary={category.name} />
+          <Link to="/">
+            <ListItem button>
+              <ListItemText primary="All" />
             </ListItem>
+          </Link>
+          {categories.map(category => (
+            <Link to={category.path}>
+              <ListItem key={category.path} button>
+                <ListItemText primary={category.name} />
+              </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />

@@ -57,6 +57,13 @@ class App extends Component {
                   <div className={`${classes.root} ${!isOpen ? classes.rootFull : ''}`}>
                     <div className={classes.container}>
                       <Route path='/' exact component={Home} />
+                      <Route
+                        exact
+                        path="/:category"
+                        render={props => (
+                          <Home category={props.match.params.category} />
+                        )}
+                      />
                     </div>
                   </div>
                 </Fragment>

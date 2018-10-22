@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Post from './Post';
+
+const styles = theme => ({
+  list: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+});
 
 class PostList extends Component {
   render() {
-    const { posts } = this.props
+    const { postsIds, classes } = this.props
 
     return (
-      <div>
-        {posts.map(post => (
-          <div key={post.id}>{post.title}</div>
+      <div className={classes.list}>
+        {postsIds.map(postId => (
+          <Post key={postId} id={postId} />
         ))}
       </div>
     )
@@ -16,14 +25,15 @@ class PostList extends Component {
 }
 
 function mapStateToProps({ posts }, { category }) {
-
-  const postsArray = Object.keys(posts).map(key => posts[key])
+  const postIdsArray = Object.keys(posts);
 
   return {
-    posts: category 
-      ? postsArray.filter(post => post.category === category)
-      : postsArray
+    postsIds: category
+      ? postIdsArray.filter(id => (
+          posts[id].category === category
+        ))
+      : postIdsArray
   }
 }
 
-export default connect(mapStateToProps)(PostList)
+export default withStyles(styles)(connect(mapStateToProps)(PostList))
