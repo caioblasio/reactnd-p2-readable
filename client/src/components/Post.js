@@ -18,6 +18,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+import { addVoteToPost } from '../actions/posts';
+
 const styles = theme => ({
   card: {
     maxWidth: 400,
@@ -47,17 +49,27 @@ class Post extends Component {
     anchorEl: null,
   };
 
-  handleClick = event => {
+  
+
+  handleMenuClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = () => {
+  handleMenuClose = () => {
     this.setState({ anchorEl: null });
   };
 
+  handleVote = vote => {
+    const { id, dispatch } = this.props;
+    let score = this.props.post.voteScore; //props are readOnly
+    vote === 'upVote' ? score++ : score--;
+    const changes = { voteScore: score}
+    dispatch(addVoteToPost(id, changes, vote));
+  }
+
   render() {
     const { post, classes } = this.props
-    const { author, category, summary, commentCount, id, timestamp, title, voteScore } = post
+    const { author, category, body, commentCount, id, timestamp, title, voteScore } = post
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
@@ -67,12 +79,12 @@ class Post extends Component {
           id="long-menu"
           anchorEl={anchorEl}
           open={open}
-          onClose={this.handleClose}
+          onClose={this.handleMenuClose}
         >
-          <MenuItem onClick={this.handleClose}>
+          <MenuItem onClick={this.handleMenuClose}>
             Edit
           </MenuItem>
-          <MenuItem onClick={this.handleClose}>
+          <MenuItem onClick={this.handleMenuClose}>
             Remove
           </MenuItem>
         </Menu>
@@ -82,7 +94,7 @@ class Post extends Component {
               aria-label="More"
               aria-owns={open ? 'long-menu' : null}
               aria-haspopup="true"
-              onClick={this.handleClick}
+              onClick={this.handleMenuClick}
             >
             <MoreVertIcon />
           </IconButton>
@@ -92,7 +104,7 @@ class Post extends Component {
         /> 
         <CardContent>
           <Typography component="p">
-            {summary}
+            {`${body.substring(0,160)}...`}
           </Typography>
         </CardContent>
         <div className={classes.footer}>
@@ -101,7 +113,7 @@ class Post extends Component {
             <div className={classes.actionIcon} style={{flexGrow: 1}}>
               <IconButton 
                 aria-label="Like"
-                onClick={() => {console.log('thumbs up')}}
+                onClick={() => this.handleVote('upVote')}
               >
                 <ThumbUp />
               </IconButton>
@@ -110,6 +122,7 @@ class Post extends Component {
               </Typography>
               <IconButton 
                 aria-label="Dislike"
+                onClick={() => this.handleVote('downVote')}
               >
                 <ThumbDown />
               </IconButton>

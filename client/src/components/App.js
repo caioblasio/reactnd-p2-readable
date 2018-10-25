@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared';
 import { fetchCategories } from '../actions/categories';
@@ -11,6 +11,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 
 import Home from './Home';
+import NewPost from './NewPost';
 
 const theme = createMuiTheme({
   palette: {
@@ -19,7 +20,10 @@ const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
   },
-  drawerWidth: 240
+  drawerWidth: 240,
+  link: {
+    textDecoration: 'initial',
+  }
 });
 
 const styles = {
@@ -54,14 +58,17 @@ class App extends Component {
               <ResponsiveDrawer/>
               <div className={`${classes.root} ${!isOpen ? classes.rootFull : ''}`}>
                 <div className={classes.container}>
-                  <Route path='/' exact component={Home} />
-                  <Route
-                    exact
-                    path="/:category"
-                    render={props => (
-                      <Home category={props.match.params.category} />
-                    )}
-                  />
+                  <Switch>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path="/new" component={NewPost} />
+                    <Route
+                      exact
+                      path="/:category"
+                      render={props => (
+                        <Home category={props.match.params.category} />
+                      )}
+                    />
+                  </Switch>
                 </div>
               </div>
             </Fragment>

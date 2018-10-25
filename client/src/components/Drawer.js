@@ -33,6 +33,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
   },
+  link: {
+    ...theme.link
+  },
   toolbar: theme.mixins.toolbar,
 });
 
@@ -53,13 +56,13 @@ class ResponsiveDrawer extends React.Component {
           component="nav"
           subheader={<ListSubheader component="div">Categories</ListSubheader>}
         >
-          <Link to="/">
+          <Link to="/" className={classes.link}>
             <ListItem button>
               <ListItemText primary="All" />
             </ListItem>
           </Link>
           {categories.map(category => (
-            <Link key={category.path} to={category.path}>
+            <Link key={category.path} to={category.path} className={classes.link}>
               <ListItem key={category.path} button>
                 <ListItemText primary={category.name} />
               </ListItem>
@@ -71,12 +74,14 @@ class ResponsiveDrawer extends React.Component {
           component="nav"
           subheader={<ListSubheader component="div">Posts</ListSubheader>}
         >
-          <ListItem button>
-            <ListItemIcon>
-              <NoteAdd />
-            </ListItemIcon>
-            <ListItemText primary="Create Post" />
-          </ListItem>
+          <Link to="/new" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <NoteAdd />
+              </ListItemIcon>
+              <ListItemText primary="Create Post" />
+            </ListItem>
+          </Link>
           <ListItem button>
             <ListItemIcon>
               <StarIcon />

@@ -28,12 +28,12 @@ class PostList extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  componentDidUpdate(prevProps){
     const { category } = this.props
-    const nextCategory = nextProps.category
+    const prevCategory = prevProps.category
 
-    if (nextCategory !== category) {
-      this.props.dispatch(fetchPostsByCategory(nextCategory));
+    if (prevCategory !== category) {
+      this.props.dispatch(fetchPostsByCategory(category));
     }
   }
   
