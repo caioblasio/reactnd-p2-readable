@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getFormatedDate } from '../utils/date';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -26,9 +27,9 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2,
     display: 'flex',
     flexDirection: 'column',
-    '&:first-child': {
-      marginLeft: 0,
-    },
+  },
+  link: {
+    ...theme.link
   },
   actions: {
     display: 'flex',
@@ -48,8 +49,6 @@ class Post extends Component {
   state = {
     anchorEl: null,
   };
-
-  
 
   handleMenuClick = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -88,25 +87,29 @@ class Post extends Component {
             Remove
           </MenuItem>
         </Menu>
-        <CardHeader
-          action={
-            <IconButton
-              aria-label="More"
-              aria-owns={open ? 'long-menu' : null}
-              aria-haspopup="true"
-              onClick={this.handleMenuClick}
-            >
-            <MoreVertIcon />
-          </IconButton>
-          }
-          title={title}
-          subheader={`by ${author} ${getFormatedDate(timestamp)}`}
-        /> 
-        <CardContent>
-          <Typography component="p">
-            {`${body.substring(0,160)}...`}
-          </Typography>
-        </CardContent>
+        <Link to={`/${category}/${id}`} className={classes.link}>
+          <CardActionArea className={classes.action}>
+            <CardHeader
+              action={
+                <IconButton
+                  aria-label="More"
+                  aria-owns={open ? 'long-menu' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleMenuClick}
+                >
+                <MoreVertIcon />
+              </IconButton>
+              }
+              title={title}
+              subheader={`by ${author} ${getFormatedDate(timestamp)}`}
+            />
+            <CardContent>
+              <Typography component="p">
+                {`${body.substring(0,160)}...`}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Link>
         <div className={classes.footer}>
           <Divider />
           <CardActions className={classes.actions} disableActionSpacing>

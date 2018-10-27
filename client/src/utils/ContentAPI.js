@@ -38,7 +38,7 @@ export const votePost = (post, vote) =>
     })
     .then(res => res.json())
 
-export const createPost = (post) => {
+export const createPost = (post) => 
   fetch(`${api}/posts/`, {
     method: 'POST',
     headers: {
@@ -48,6 +48,6 @@ export const createPost = (post) => {
     body: JSON.stringify(post)
   })
   .then(res => res.json())
-}
+
 
 

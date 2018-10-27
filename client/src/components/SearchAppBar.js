@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { toggleDrawer } from '../actions/drawer';
 
@@ -32,6 +33,9 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  link: {
+    ...theme.link,
   },
   search: {
     position: 'relative',
@@ -98,9 +102,11 @@ class SearchAppBar extends Component {
               >
               <MenuIcon />
             </IconButton>
-            <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-              Readable
-            </Typography>
+            <Link to="/" className={classes.link}>
+              <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                Readable
+              </Typography>
+            </Link>
             <div className={classes.grow} />
             <div className={classes.search}>
               <div className={classes.searchIcon}>

@@ -20,11 +20,11 @@ const styles = theme => ({
 class PostList extends Component {
 
   componentDidMount(){
-    const { category } = this.props;
+    const { category, dispatch } = this.props;
     if(category){
-      this.props.dispatch(fetchPostsByCategory(category));
+      dispatch(fetchPostsByCategory(category));
     } else {
-      this.props.dispatch(fetchPosts());
+      dispatch(fetchPosts());
     }
   }
 

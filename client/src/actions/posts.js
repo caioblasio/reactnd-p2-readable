@@ -9,10 +9,8 @@ export function fetchPosts() {
   return (dispatch) => {
     dispatch(showLoading())
     return getPosts()
-      .then(posts => {
-        dispatch(_receivePosts(posts))
-        dispatch(hideLoading())
-      })
+      .then(posts => dispatch(_receivePosts(posts)))
+      .then(() => dispatch(hideLoading()))
   }
 }
 
@@ -20,10 +18,8 @@ export function fetchPostsByCategory(category) {
   return (dispatch) => {
     dispatch(showLoading())
     return getPostsByCategory(category)
-      .then(posts => {
-        dispatch(_receivePosts(posts))
-        dispatch(hideLoading())
-      })
+      .then(posts => dispatch(_receivePosts(posts)))
+      .then(() => dispatch(hideLoading()))
   }
 }
 
@@ -31,10 +27,8 @@ export function fetchPostById(id) {
   return (dispatch) => {
     dispatch(showLoading())
     return getPostById(id)
-      .then(post => {
-        dispatch(_receivePosts(post))
-        dispatch(hideLoading())
-      })
+      .then(post => dispatch(_receivePosts(post)))
+      .then(() => dispatch(hideLoading()))
   }
 }
 
@@ -49,10 +43,10 @@ export function addVoteToPost(id, changes, vote) {
 
 export function addPost(post) {
   return (dispatch) => {
+    dispatch(showLoading())
     return createPost(post)
-      .then((post) => {
-        dispatch(_addPost(post))
-      })
+      .then((post) => dispatch(_addPost(post)))
+      .then(() => dispatch(hideLoading()))
   }
 }
 

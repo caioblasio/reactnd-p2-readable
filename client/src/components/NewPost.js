@@ -1,38 +1,96 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
+import { Redirect } from 'react-router-dom';
+import uuidv1 from 'uuid/v1';
 import TextField from '@material-ui/core/TextField';
 import { TextFieldTitle } from './TextFields';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import Form from './Form';
+
+import { addPost } from '../actions/posts';
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+  root: {
+   
+    width: '800px',
+    margin: '0 auto',
+    padding: 0,
   },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
+  header: {
+    padding: theme.spacing.unit * 2,
+    background: theme.palette.background.default,
+    color: theme.palette.text.secondary,
   },
-  dense: {
-    marginTop: 16,
-  },
-  menu: {
-    width: 200,
-  },
+  content: {
+    ...theme.mixins.gutters(),
+    padding: theme.spacing.unit * 2,
+    
+  }
 });
 
 class NewPost extends Component {
 
+  state = {
+    toHome: false
+  }
 
+  handleSubmit = (e, values) => {
+    e.preventDefault();
+
+    const { dispatch } = this.props;
+    console.log(values)
+
+    if (values.title && values.body && values.author && values.category) {
+
+      const post = {
+        id: uuidv1(),
+        timestamp: Date.now(),
+        title: values.title,
+        body: values.body,
+        author: values.author,
+        category: values.category,
+      }
+  
+      dispatch(addPost(post));
+      
+      this.setState({
+        toHome: true
+      })
+    }
+    
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes, categories } = this.props;
+    if(this.state.toHome){
+      return <Redirect to="/" />
+    }
     return (
-      <form className={classes.container} noValidate autoComplete="off">
-        <TextFieldTitle />
-      </form>
+      <Paper className={classes.root} elevation={1}>
+        <Typography variant="h6" className={classes.header}>
+          New Post
+        </Typography>
+        <div className={classes.content}>
+          <Form
+            onSubmit={this.handleSubmit}
+            title
+            body
+            author
+            categories={categories}
+          />
+        </div>
+      </Paper>
     )
   }
 }
 
-export default withStyles(styles)(connect()(NewPost));
+function mapStateToProps({ categories }){
+  return {
+    categories
+  }
+}
+
+export default withStyles(styles)(connect(mapStateToProps)(NewPost));
