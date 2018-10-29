@@ -59,6 +59,7 @@ class PostList extends Component {
 }
 
 function mapStateToProps({ posts, loading }, { category }) {
+  
   const postIdsArray = Object.keys(posts);
 
   return {

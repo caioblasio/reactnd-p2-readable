@@ -21,6 +21,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import { addVoteToPost } from '../actions/posts';
 
+import VoteControl from './VoteControl';
+
 const styles = theme => ({
   card: {
     maxWidth: 400,
@@ -44,6 +46,8 @@ const styles = theme => ({
   }
 });
 
+
+
 class Post extends Component {
 
   state = {
@@ -58,20 +62,20 @@ class Post extends Component {
     this.setState({ anchorEl: null });
   };
 
-  handleVote = vote => {
-    const { id, dispatch } = this.props;
-    let score = this.props.post.voteScore; //props are readOnly
-    vote === 'upVote' ? score++ : score--;
-    const changes = { voteScore: score}
-    dispatch(addVoteToPost(id, changes, vote));
-  }
+  // handleVote = vote => {
+  //   const { id, dispatch } = this.props;
+  //   let score = this.props.post.voteScore; //props are readOnly
+  //   vote === 'upVote' ? score++ : score--;
+  //   const changes = { voteScore: score}
+  //   dispatch(addVoteToPost(id, changes, vote));
+  // }
 
   render() {
     const { post, classes } = this.props
     const { author, category, body, commentCount, id, timestamp, title, voteScore } = post
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-
+    console.log('render again')
     return (
       <Card className={classes.card}>
         <Menu
@@ -88,32 +92,30 @@ class Post extends Component {
           </MenuItem>
         </Menu>
         <Link to={`/${category}/${id}`} className={classes.link}>
-          <CardActionArea className={classes.action}>
-            <CardHeader
-              action={
-                <IconButton
-                  aria-label="More"
-                  aria-owns={open ? 'long-menu' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenuClick}
-                >
-                <MoreVertIcon />
-              </IconButton>
-              }
-              title={title}
-              subheader={`by ${author} ${getFormatedDate(timestamp)}`}
-            />
-            <CardContent>
-              <Typography component="p">
-                {`${body.substring(0,160)}...`}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <CardHeader
+            action={
+              <IconButton
+                aria-label="More"
+                aria-owns={open ? 'long-menu' : null}
+                aria-haspopup="true"
+                onClick={this.handleMenuClick}
+              >
+              <MoreVertIcon />
+            </IconButton>
+            }
+            title={title}
+            subheader={`by ${author} ${getFormatedDate(timestamp)}`}
+          />
+          <CardContent>
+            <Typography component="p">
+              {`${body.substring(0,160)}...`}
+            </Typography>
+          </CardContent>
         </Link>
         <div className={classes.footer}>
           <Divider />
           <CardActions className={classes.actions} disableActionSpacing>
-            <div className={classes.actionIcon} style={{flexGrow: 1}}>
+            {/* <div className={classes.actionIcon} style={{flexGrow: 1}}>
               <IconButton 
                 aria-label="Like"
                 onClick={() => this.handleVote('upVote')}
@@ -129,6 +131,13 @@ class Post extends Component {
               >
                 <ThumbDown />
               </IconButton>
+            </div> */}
+            <div className={classes.actionIcon} style={{flexGrow: 1}}>
+              <VoteControl
+                type="post"
+                voteScore={voteScore}
+                id={id}
+              />
             </div>
             <div className={classes.actionIcon} >
               <IconButton

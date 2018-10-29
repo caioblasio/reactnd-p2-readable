@@ -39,13 +39,39 @@ export const votePost = (post, vote) =>
     .then(res => res.json())
 
 export const createPost = (post) => 
-  fetch(`${api}/posts/`, {
+  fetch(`${api}/posts`, {
     method: 'POST',
     headers: {
       ...headers,
       'Content-Type': 'application/json'
     }, 
     body: JSON.stringify(post)
+  })
+  .then(res => res.json())
+
+export const getCommentsByPostId = (id) =>
+  fetch(`${api}/posts/${id}/comments`, { headers })
+    .then(res => res.json())
+
+export const voteComment = (id, option) => 
+  fetch(`${api}/comments/${id}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify({ option })
+  })
+  .then(res => res.json())
+
+export const createComment = (comment) => 
+  fetch(`${api}/comments`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify(comment)
   })
   .then(res => res.json())
 

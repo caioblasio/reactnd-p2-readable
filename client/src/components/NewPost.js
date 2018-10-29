@@ -3,18 +3,14 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 import uuidv1 from 'uuid/v1';
-import TextField from '@material-ui/core/TextField';
-import { TextFieldTitle } from './TextFields';
-import Button from '@material-ui/core/Button';
+import Form from './Form';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import Form from './Form';
 
 import { addPost } from '../actions/posts';
 
 const styles = theme => ({
   root: {
-   
     width: '800px',
     margin: '0 auto',
     padding: 0,
@@ -39,9 +35,7 @@ class NewPost extends Component {
 
   handleSubmit = (e, values) => {
     e.preventDefault();
-
     const { dispatch } = this.props;
-    console.log(values)
 
     if (values.title && values.body && values.author && values.category) {
 
@@ -65,9 +59,11 @@ class NewPost extends Component {
 
   render() {
     const { classes, categories } = this.props;
+
     if(this.state.toHome){
       return <Redirect to="/" />
     }
+
     return (
       <Paper className={classes.root} elevation={1}>
         <Typography variant="h6" className={classes.header}>

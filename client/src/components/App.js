@@ -13,6 +13,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
 
 import Home from './Home';
+import Category from './Category';
 import NewPost from './NewPost';
 import PostDetail from './PostDetail';
 
@@ -78,7 +79,7 @@ class App extends Component {
                     <Route
                       exact path="/:category"
                       render={props => (
-                        <Home category={props.match.params.category} />
+                        <Category category={props.match.params.category} />
                       )}
                     />
                     <Route 

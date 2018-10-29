@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react'
-import { connect } from 'react-redux';
+import React, { Fragment } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import PostList from './PostList'
@@ -15,46 +14,24 @@ const styles = theme => ({
   }
 });
 
-class Home extends Component {
+const Home = props => {
 
-  getCategory = nextCategory =>
-    this.props.categories.find(category => category.path === nextCategory)
+  const { classes } = props;
 
-  render() {
-    const { classes } = this.props;
-    const category = this.getCategory(this.props.category)
-    return (
-      <Fragment>
-        {this.props.category
-          ? (category 
-              ? <Fragment>
-                  <Typography variant="h5">
-                    {category.name}
-                  </Typography>
-                  <PostList category={category.path} />
-                </Fragment>
-              : <Typography variant="h5">
-                  Category not found
-                </Typography>
-            )
-          : <Fragment>
-              <Typography variant="h5">
-                All Posts
-              </Typography>
-              <PostList/>
-            </Fragment>
-        }
-        <Link to="/new">
-          <Button variant="fab" color="primary" aria-label="Add" className={classes.button}>
-            <AddIcon />
-          </Button>
-        </Link>
-      </Fragment>
-    )
-  }
+  return (
+    <Fragment>
+      <Typography variant="h5">
+        All Posts
+      </Typography>
+      <PostList/>
+      <Link to="/new">
+        <Button variant="fab" color="primary" aria-label="Add" className={classes.button}>
+          <AddIcon />
+        </Button>
+      </Link>
+    </Fragment>
+  )
   
 }
 
-const mapStateToProps = ({ categories }) => ({ categories })
-
-export default withStyles(styles)(connect(mapStateToProps)(Home))
+export default withStyles(styles)(Home)

@@ -5,7 +5,8 @@ export default function posts (state = {}, action) {
     case RECEIVE_POSTS :
       return {
         ...state,
-        ...action.posts.reduce((acc, post) => ({ ...acc, [post.id]: post}), {})
+        //...action.posts.reduce((acc, post) => ({ ...acc, [post.id]: post}), {})
+        ...action.posts
       }
     case EDIT_POST:
       return {
