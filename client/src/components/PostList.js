@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import Post from './Post';
 
+import sortList from '../utils/sort';
 import { fetchPosts, fetchPostsByCategory } from '../actions/posts';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -39,7 +40,7 @@ class PostList extends Component {
   
   render() {
     const { postsIds, isLoading, classes } = this.props
-
+    console.log('sorted', postsIds)
     return (
       <Fragment>
       {!isLoading && 
@@ -58,9 +59,14 @@ class PostList extends Component {
   }
 }
 
-function mapStateToProps({ posts, loading }, { category }) {
+function mapStateToProps({ posts, loading, sort }, { category, excludeId }) {
   
-  const postIdsArray = Object.keys(posts);
+  const sortedPosts = sortList(Object.keys(posts).map(key => posts[key]), sort)
+    .reduce((acc, post) => ({ ...acc, [post.id]: post}), {});
+
+  const postIdsArray = !excludeId
+    ? Object.keys(sortedPosts) 
+    : Object.keys(sortedPosts).filter(postId => postId !== excludeId)
 
   return {
     postsIds: category

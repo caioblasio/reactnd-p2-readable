@@ -10,7 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { addComment } from '../actions/comments';
 
 const styles = theme => ({
-  
+  root: {
+    marginTop: theme.spacing.unit * 2,
+  }
 });
 
 class NewComment extends Component {
@@ -42,9 +44,9 @@ class NewComment extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
-        <Typography variant="h6">
-          New Comment
+      <div className={classes.root}>
+        <Typography variant="body2">
+          <strong>New Comment</strong>
         </Typography>
         <div className={classes.content}>
           <Form

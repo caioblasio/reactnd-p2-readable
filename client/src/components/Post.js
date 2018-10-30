@@ -25,7 +25,8 @@ import VoteControl from './VoteControl';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    width: '100%',
+    maxWidth: 380,
     margin: theme.spacing.unit * 2,
     display: 'flex',
     flexDirection: 'column',
@@ -62,20 +63,12 @@ class Post extends Component {
     this.setState({ anchorEl: null });
   };
 
-  // handleVote = vote => {
-  //   const { id, dispatch } = this.props;
-  //   let score = this.props.post.voteScore; //props are readOnly
-  //   vote === 'upVote' ? score++ : score--;
-  //   const changes = { voteScore: score}
-  //   dispatch(addVoteToPost(id, changes, vote));
-  // }
-
   render() {
     const { post, classes } = this.props
     const { author, category, body, commentCount, id, timestamp, title, voteScore } = post
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    console.log('render again')
+
     return (
       <Card className={classes.card}>
         <Menu
@@ -115,23 +108,6 @@ class Post extends Component {
         <div className={classes.footer}>
           <Divider />
           <CardActions className={classes.actions} disableActionSpacing>
-            {/* <div className={classes.actionIcon} style={{flexGrow: 1}}>
-              <IconButton 
-                aria-label="Like"
-                onClick={() => this.handleVote('upVote')}
-              >
-                <ThumbUp />
-              </IconButton>
-              <Typography component="p">
-                {voteScore}
-              </Typography>
-              <IconButton 
-                aria-label="Dislike"
-                onClick={() => this.handleVote('downVote')}
-              >
-                <ThumbDown />
-              </IconButton>
-            </div> */}
             <div className={classes.actionIcon} style={{flexGrow: 1}}>
               <VoteControl
                 type="post"

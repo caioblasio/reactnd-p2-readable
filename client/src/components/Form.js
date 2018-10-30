@@ -110,7 +110,7 @@ class Form extends Component {
             variant={variant}
           >
           {categories.map(category => (
-            <MenuItem key={category.path} value={category.name}>
+            <MenuItem key={category.path} value={category.path}>
               {category.name}
             </MenuItem>
           ))}
