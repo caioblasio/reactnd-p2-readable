@@ -27,6 +27,26 @@ export const getPostById = (post) =>
   fetch(`${api}/posts/${post}`, { headers })
     .then(res => res.json())
 
+export const editPost = (id, changes) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'PUT',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(changes),
+  })
+  .then(res => res.json())
+
+export const deletePost = (id) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'DELETE',
+    headers: {
+      ...headers,
+    },
+  })
+  .then(res => res.json())
+
 export const votePost = (post, vote) =>
   fetch(`${api}/posts/${post}`, {
       method: 'POST',

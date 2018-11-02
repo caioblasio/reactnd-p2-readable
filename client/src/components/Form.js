@@ -5,6 +5,8 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 
+import { withRouter } from 'react-router-dom';
+
 const styles = theme => ({
   container: {
     position: 'relative',
@@ -34,7 +36,20 @@ class Form extends Component {
     title: this.props.defaultTitle,
     body: this.props.defaultBody,
     author: this.props.defaultAuthor,
-    category: ""
+    category: this.props.defaultCategory || "" 
+  }
+
+  componentWillUnmount() {
+    this.clearForm();
+  }
+
+  clearForm = () => {
+    this.setState({
+      title: '',
+      body: '',
+      author: '',
+      category: ''
+    });
   }
 
   handleChange = name => event => {
@@ -43,10 +58,18 @@ class Form extends Component {
     });
   };
 
+  handleSubmit = (e) => {
+    const { onSubmit } = this.props;
+    e.preventDefault();
+    onSubmit(this.state);
+    this.clearForm();
+  }
+ 
   render() {
-    const { classes, variant, onSubmit, title, body, author, categories } = this.props;
+    const { classes, variant, title, body, author, categories } = this.props;
+
     return (
-      <form className={classes.container} noValidate autoComplete="off" onSubmit={(e) => {onSubmit(e, this.state)}}>
+      <form className={classes.container} noValidate autoComplete="off" onSubmit={this.handleSubmit}>
         {title &&
           <TextField
             id="title"
@@ -67,7 +90,7 @@ class Form extends Component {
             id="body"
             label="Body"
             multiline
-            rows="4"
+            rows="8"
             fullWidth
             value={this.state.body}
             onChange={this.handleChange('body')}
@@ -117,7 +140,7 @@ class Form extends Component {
         </TextField>
         }
        <div className={classes.submit}>
-        <Button variant="outlined" color="secondary" className={classes.button}>
+        <Button variant="outlined" color="secondary" className={classes.button} onClick={() => {this.props.history.goBack()}}>
           Cancel
         </Button> 
         <Button variant="contained" color="primary" type="submit" className={classes.button}>
@@ -129,4 +152,4 @@ class Form extends Component {
   }
 }
 
-export default withStyles(styles)(Form)
+export default withStyles(styles)(withRouter(Form))

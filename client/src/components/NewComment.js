@@ -17,9 +17,7 @@ const styles = theme => ({
 
 class NewComment extends Component {
 
-
-  handleSubmit = (e, values) => {
-    e.preventDefault();
+  handleSubmit = (values) => {
     const { dispatch, parentId } = this.props;
 
     if (values.body && values.author) {
@@ -31,11 +29,9 @@ class NewComment extends Component {
         author: values.author,
         parentId
       }
-  
+      
       dispatch(addComment(comment));
 
-      e.target.reset();
-      
     }
     
   }

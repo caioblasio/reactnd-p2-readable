@@ -9,19 +9,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
-import ThumbUp from '@material-ui/icons/ThumbUp';
-import ThumbDown from '@material-ui/icons/ThumbDown';
 import Comment from '@material-ui/icons/Comment';
 import Divider from '@material-ui/core/Divider';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { addVoteToPost } from '../actions/posts';
+import { removePost } from '../actions/posts';
 
 import VoteControl from './VoteControl';
+
 
 const styles = theme => ({
   card: {
@@ -32,7 +30,8 @@ const styles = theme => ({
     flexDirection: 'column',
   },
   link: {
-    ...theme.link
+    ...theme.link,
+    outline: 0,
   },
   actions: {
     display: 'flex',
@@ -56,12 +55,23 @@ class Post extends Component {
   };
 
   handleMenuClick = event => {
+    event.preventDefault();
     this.setState({ anchorEl: event.currentTarget });
   };
 
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  handleRemovePost = () =>{
+     const { dispatch, post } = this.props;
+     const alertConfirmation = window.confirm(
+        `Are you sure you want to delete the post '${post.title}'?`
+      )
+    if (alertConfirmation) dispatch(removePost(post.id))
+
+    this.handleMenuClose();
+  }
 
   render() {
     const { post, classes } = this.props
@@ -77,10 +87,13 @@ class Post extends Component {
           open={open}
           onClose={this.handleMenuClose}
         >
-          <MenuItem onClick={this.handleMenuClose}>
-            Edit
-          </MenuItem>
-          <MenuItem onClick={this.handleMenuClose}>
+        <Link
+          className={classes.link}
+          to={`/edit/${id}`}
+          >
+            <MenuItem onClick={this.handleMenuClose}>Edit</MenuItem>
+          </Link>
+          <MenuItem onClick={this.handleRemovePost}>
             Remove
           </MenuItem>
         </Menu>

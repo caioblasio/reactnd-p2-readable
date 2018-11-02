@@ -11,6 +11,7 @@ const styles = theme => ({
   list: {
     display: 'flex',
     flexWrap: 'wrap',
+
   },
   loading: {
     marginTop: theme.spacing.unit * 4,
@@ -44,7 +45,7 @@ class PostList extends Component {
     return (
       <Fragment>
       {!isLoading && 
-        <div className={classes.list}>
+      <div className={classes.list}>
         {postsIds.map(postId => (
           <Post key={postId} id={postId} />
         ))}

@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, EDIT_POST, ADD_POST } from '../actions/posts';
+import { RECEIVE_POSTS, EDIT_POST, ADD_POST, REMOVE_POST } from '../actions/posts';
 
 export default function posts (state = {}, action) {
   switch(action.type) {
@@ -23,6 +23,10 @@ export default function posts (state = {}, action) {
           ...action.post
         }
       }
+    case REMOVE_POST:
+      let  {[action.id]: deleted, ...newState} = state;
+      return newState
+      
     default :
       return state
   }

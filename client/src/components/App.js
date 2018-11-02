@@ -17,6 +17,8 @@ import Category from './Category';
 import NewPost from './NewPost';
 import PostDetail from './PostDetail';
 
+import classNames from 'classnames';
+
 const theme = createMuiTheme({
   palette: {
     primary: blue,
@@ -34,22 +36,37 @@ const theme = createMuiTheme({
 
 const styles = {
   root: {
-    marginLeft: theme.drawerWidth,
-    marginTop: theme.mixins.toolbar['@media (min-width:600px)'].minHeight,
-    transition: 'margin-left .25s cubic-bezier(0.4,0.0,0.2,1),visibility 0s linear 0s'
+    display: 'flex',
   },
-  rootFull: {
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing.unit * 3,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
     marginLeft: 0,
   },
-  container: {
-    padding: theme.spacing.unit * 4,
-
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: theme.drawerWidth,
   },
   loading: {
     position: 'absolute',
     width: '100%',
     top: theme.mixins.toolbar['@media (min-width:600px)'].minHeight,
-  }
+  },
+  toolbar: theme.mixins.toolbar,
 };
 
 class App extends Component {
@@ -61,7 +78,7 @@ class App extends Component {
   render() {
     const { classes, isOpen, isLoading } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <MuiThemeProvider theme={theme}>
           <Router>
             <Fragment>
@@ -71,11 +88,20 @@ class App extends Component {
               {isLoading &&
                 <LinearProgress color="secondary" className={classes.loading}/>
               }
-              <div className={`${classes.root} ${!isOpen ? classes.rootFull : ''}`}>
-                <div className={classes.container}>
+              <div className={classNames(classes.content, {
+                  [classes.contentShift]: isOpen,
+                })}>
+                <div className={classes.drawerHeader}/>
+                <Fragment>
                   <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path="/new" component={NewPost} />
+                    <Route
+                      exact path="/edit/:post"
+                      render={props => (
+                        <NewPost postId={props.match.params.post} />
+                      )}
+                    />
                     <Route
                       exact path="/:category"
                       render={props => (
@@ -85,11 +111,11 @@ class App extends Component {
                     <Route 
                       exact path="/:category/:post" 
                       render={props => (
-                        <PostDetail id={props.match.params.post} />
+                        <PostDetail id={props.match.params.post} {...props} />
                       )} 
                     />
                   </Switch>
-                </div>
+                </Fragment>
               </div>
             </Fragment>
           </Router>

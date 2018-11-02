@@ -7,7 +7,8 @@ import Form from './Form';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import { addPost } from '../actions/posts';
+import { addPost, editPost, fetchPostById } from '../actions/posts';
+
 
 const styles = theme => ({
   root: {
@@ -30,17 +31,22 @@ const styles = theme => ({
 class NewPost extends Component {
 
   state = {
-    toHome: false
+    path: ''
   }
 
-  handleSubmit = (e, values) => {
-    e.preventDefault();
-    const { dispatch } = this.props;
+  componentDidMount() {
+    const { dispatch, postId } = this.props;
+    if(postId)
+      dispatch(fetchPostById(postId))
+  }
+
+  handleSubmit = (values) => {
+    const { dispatch, postId } = this.props;
 
     if (values.title && values.body && values.author && values.category) {
 
       const post = {
-        id: uuidv1(),
+        id: postId || uuidv1(),
         timestamp: Date.now(),
         title: values.title,
         body: values.body,
@@ -48,44 +54,73 @@ class NewPost extends Component {
         category: values.category,
       }
   
-      dispatch(addPost(post));
+      if(postId){
+        dispatch(editPost(postId, post));
+      } else {
+        dispatch(addPost(post));
+      }
       
       this.setState({
-        toHome: true
+        path: `/${post.category}/${post.id}`
       })
     }
     
   }
 
   render() {
-    const { classes, categories } = this.props;
+    const { classes, categories, post } = this.props;
 
-    if(this.state.toHome){
-      return <Redirect to="/" />
+    if(this.state.path){
+      return <Redirect to={this.state.path} />
     }
 
     return (
       <Paper className={classes.root} elevation={1}>
-        <Typography variant="h6" className={classes.header}>
-          New Post
-        </Typography>
-        <div className={classes.content}>
-          <Form
-            onSubmit={this.handleSubmit}
-            title
-            body
-            author
-            categories={categories}
-          />
-        </div>
+        {!post &&
+          <Fragment>
+            <Typography variant="h6" className={classes.header}>
+            New Post
+            </Typography>
+            <div className={classes.content}>
+              <Form
+                onSubmit={this.handleSubmit}
+                title
+                body
+                author
+                categories={categories}
+              />
+            </div>
+          </Fragment>
+        }
+        {post &&
+          <Fragment>
+            <Typography variant="h6" className={classes.header}>
+              Edit Post
+            </Typography>
+            <div className={classes.content}>
+              <Form
+                onSubmit={this.handleSubmit}
+                defaultTitle={post.title}
+                title
+                defaultBody={post.body}
+                body
+                defaultAuthor={post.author}
+                author
+                defaultCategory={post.category}
+                categories={categories}
+              />
+            </div>
+          </Fragment>
+        }
       </Paper>
     )
   }
 }
 
-function mapStateToProps({ categories }){
+function mapStateToProps({ categories, posts }, { postId }){
   return {
-    categories
+    categories,
+    post: posts[postId]
   }
 }
 

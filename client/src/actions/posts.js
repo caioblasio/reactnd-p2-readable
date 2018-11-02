@@ -1,14 +1,15 @@
-import { getPosts, getPostsByCategory, getPostById, votePost, createPost } from '../utils/contentAPI';
+import * as ContentAPI from '../utils/contentAPI';
 import { showLoading, hideLoading } from '../actions/loading';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const EDIT_POST = 'EDIT_POST';
 export const ADD_POST = 'ADD_POST';
+export const REMOVE_POST = 'REMOVE_POST';
 
 export function fetchPosts() {
   return (dispatch) => {
     dispatch(showLoading())
-    return getPosts()
+    return ContentAPI.getPosts()
       .then(posts => dispatch(_receivePosts(posts)))
       .then(() => dispatch(hideLoading()))
   }
@@ -17,7 +18,7 @@ export function fetchPosts() {
 export function fetchPostsByCategory(category) {
   return (dispatch) => {
     dispatch(showLoading())
-    return getPostsByCategory(category)
+    return ContentAPI.getPostsByCategory(category)
       .then(posts => dispatch(_receivePosts(posts)))
       .then(() => dispatch(hideLoading()))
   }
@@ -26,7 +27,7 @@ export function fetchPostsByCategory(category) {
 export function fetchPostById(id) {
   return (dispatch) => {
     dispatch(showLoading())
-    return getPostById(id)
+    return ContentAPI.getPostById(id)
       .then(post => dispatch(_receivePosts(post)))
       .then(() => dispatch(hideLoading()))
   }
@@ -34,7 +35,7 @@ export function fetchPostById(id) {
 
 export function addVoteToPost(id, changes, vote) {
   return (dispatch) => {
-    return votePost(id, vote)
+    return ContentAPI.votePost(id, vote)
       .then(() => {
         dispatch(_editPost(id, changes))
       })
@@ -44,8 +45,26 @@ export function addVoteToPost(id, changes, vote) {
 export function addPost(post) {
   return (dispatch) => {
     dispatch(showLoading())
-    return createPost(post)
+    return ContentAPI.createPost(post)
       .then((post) => dispatch(_addPost(post)))
+      .then(() => dispatch(hideLoading()))
+  }
+}
+
+export function editPost(id, changes) {
+  return (dispatch) => {
+    dispatch(showLoading())
+    return ContentAPI.editPost(id, changes)
+      .then((post) => dispatch(_editPost(id, changes)))
+      .then(() => dispatch(hideLoading()))
+  }
+}
+
+export function removePost(id) {
+  return (dispatch) => {
+    dispatch(showLoading())
+    return ContentAPI.deletePost(id)
+      .then((post) => dispatch(_removePost(post.id)))
       .then(() => dispatch(hideLoading()))
   }
 }
@@ -56,6 +75,14 @@ function _addPost(post) {
     post
   }
 }
+
+function _removePost(id) {
+  return {
+    type: REMOVE_POST,
+    id
+  }
+}
+
 
 function _editPost(id, changes){
   return {

@@ -17,6 +17,7 @@ import StarIcon from '@material-ui/icons/Star';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toggleDrawer } from '../actions/drawer';
+import { changeSort } from '../actions/sort';
 
 const styles = theme => ({
   navIconHide: {
@@ -26,7 +27,7 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: theme.drawerWidth,
-    position: 'absolute',
+    flexShrink: 0,
   },
   content: {
     flexGrow: 1,
@@ -45,11 +46,16 @@ class ResponsiveDrawer extends React.Component {
     this.props.dispatch(toggleDrawer())
   };
 
+  handleSort = (e, value) => {
+    const { dispatch } = this.props;
+    dispatch(changeSort(value));
+  }
+
   render() {
-    const { isOpen, categories, classes, theme } = this.props;
+    const { isOpen, categories, sort, classes, theme } = this.props;
 
     const drawer = (
-      <div>
+      <Fragment>
         <div className={classes.toolbar} />
         <Divider />
         <List
@@ -89,7 +95,26 @@ class ResponsiveDrawer extends React.Component {
             <ListItemText primary="Starred" />
           </ListItem>
         </List>
-      </div>
+        <List
+          component="nav"
+          subheader={<ListSubheader component="div">Sort</ListSubheader>}
+        >
+          <ListItem 
+            button
+            selected={sort === 'score'}
+            onClick={(e) => this.handleSort(e, 'score')}
+          >
+            <ListItemText primary="Vote Score" />
+          </ListItem>
+          <ListItem 
+            button
+            selected={sort === 'date'}
+            onClick={(e) => this.handleSort(e, 'date')}
+          >
+            <ListItemText primary="Date" />
+          </ListItem>
+        </List>
+      </Fragment>
     );
 
     return (
@@ -126,10 +151,11 @@ class ResponsiveDrawer extends React.Component {
   }
 }
 
-function mapStateToProps({ drawer, categories }) {
+function mapStateToProps({ drawer, categories, sort }) {
   return {
     isOpen: drawer,
-    categories
+    categories,
+    sort
   }
 }
 

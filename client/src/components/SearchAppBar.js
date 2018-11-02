@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,9 +15,7 @@ import { connect } from 'react-redux';
 import { toggleDrawer } from '../actions/drawer';
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-  },
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
   },
@@ -91,8 +89,8 @@ class SearchAppBar extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
-        <AppBar position="absolute" className={classes.appBar}>
+      <Fragment>
+        <AppBar position="fixed" className={classes.appBar}>
           <Toolbar>
             <IconButton 
               className={classes.menuButton} 
@@ -122,7 +120,7 @@ class SearchAppBar extends Component {
             </div>
           </Toolbar>
         </AppBar>
-      </div>
+      </Fragment>
     );
   }
 }
