@@ -12,7 +12,7 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleDrawer } from '../actions/drawer';
+import { toggleDrawer } from '../../actions/drawer';
 
 const styles = theme => ({
 
@@ -82,12 +82,9 @@ const styles = theme => ({
 
 class SearchAppBar extends Component {
 
-  handleDrawerToggle = () => {
-    this.props.dispatch(toggleDrawer())
-  };
 
   render() {
-    const { classes } = this.props;
+    const { toggleDrawer, classes } = this.props;
     return (
       <Fragment>
         <AppBar position="fixed" className={classes.appBar}>
@@ -96,7 +93,7 @@ class SearchAppBar extends Component {
               className={classes.menuButton} 
               color="inherit" 
               aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
+              onClick={toggleDrawer}
               >
               <MenuIcon />
             </IconButton>

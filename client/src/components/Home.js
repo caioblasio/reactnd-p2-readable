@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import PostList from './PostList'
+import PostList from './PostList';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
   button: {
@@ -20,10 +21,7 @@ const Home = props => {
 
   return (
     <Fragment>
-      <Typography variant="h5">
-        All Posts
-      </Typography>
-      <PostList/>
+      <PostList headline="All posts" />
       <Link to="/new">
         <Button variant="fab" color="primary" aria-label="Add" className={classes.button}>
           <AddIcon />

@@ -2,10 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { getFormatedDate } from '../utils/date';
-import { fetchPostById } from '../actions/posts';
+import { fetchPostById, removePost } from '../actions/posts';
 import { withStyles } from '@material-ui/core/styles';
 
-import Form from './Form';
+import { Link } from 'react-router-dom';
+
 import CommentList from './CommentList';
 import NewComment from './NewComment';
 import PostList from './PostList';
@@ -15,12 +16,18 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 
+import IconButton from '@material-ui/core/IconButton';
+import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
+import NotFound from './NotFound';
+
 const styles = theme => ({
   root: {
     display: 'flex',
   },
   post: {
     width: '70%',
+    margin: '0 auto',
   },
   detail: {
     ...theme.mixins.gutters(),
@@ -50,20 +57,42 @@ const styles = theme => ({
   },
   action: {
     display: 'flex',
+  },
+  vote: {
+    display: 'flex',
     alignItems: 'center',
-  }
+    flexGrow: 1,
+  },
+  link: {
+    ...theme.link
+  },
 });
 
 class PostDetail extends Component {
 
   componentDidMount(){
-    const { dispatch, id } = this.props;
-    dispatch(fetchPostById(id))
+    const { fetchPostById, id } = this.props;
+    fetchPostById(id);
   }
 
+  handleDelete = () => {
+    const { removePost, post, history } = this.props;
+    const alertConfirmation = window.confirm(
+      `Are you sure you want to delete the post ${post.title}?`
+    )
+
+    if (alertConfirmation){
+      removePost(post.id)
+        .then(() => { history.push('/') })
+    }
+  }
 
   render() {
-    const { post, classes } = this.props;
+    const { post, loading, classes } = this.props;
+
+    if(!post && !loading){
+      return <NotFound/>
+    }
     
     return (
       <Fragment>
@@ -83,11 +112,29 @@ class PostDetail extends Component {
 
                 <Divider className={classes.divider} />
                 <div className={classes.action}>
-                  <VoteControl
-                    type="post"
-                    voteScore={post.voteScore}
-                    id={post.id}
-                  />
+                  <div className={classes.vote}>
+                    <VoteControl
+                      type="post"
+                      voteScore={post.voteScore}
+                      id={post.id}
+                    />
+                  </div>
+                  <div>
+                    <IconButton 
+                      aria-label="Like"
+                      onClick={() => {}}
+                    >
+                      <Link to={`/edit/${post.id}`} className={classes.link}>
+                        <Edit />
+                      </Link>
+                    </IconButton>
+                    <IconButton 
+                      aria-label="Like"
+                      onClick={this.handleDelete}
+                    >
+                      <Delete />
+                    </IconButton>
+                  </div>
                 </div>
               </Paper>
               <Paper className={classes.detail} elevation={1}>
@@ -115,10 +162,22 @@ class PostDetail extends Component {
   }
 }
 
-function mapStateToProps({ posts }, {id}) {
+const mapStateToProps = ({ posts, loading }, {id}) => {
   return {
-    post: posts[id]
+    post: posts[id],
+    loading
   }
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(PostDetail))
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchPostById: (id) => {
+      dispatch(fetchPostById(id))
+    },
+    removePost: (id) => {
+      return dispatch(removePost(id))
+    }
+  }
+}
+
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PostDetail))

@@ -6,6 +6,7 @@ import PostList from './PostList'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import NotFound from './NotFound';
 
 const styles = theme => ({
   button: {
@@ -27,14 +28,9 @@ class Category extends Component {
       <Fragment>
         {category
           ? <Fragment>
-              <Typography variant="h5">
-                {category.name}
-              </Typography>
-              <PostList category={category.path} />
+              <PostList headline={category.name} category={category.path} />
             </Fragment>
-          : <Typography variant="h5">
-              Category not found
-            </Typography>
+          : <NotFound/>
         }
         <Link to="/new">
           <Button variant="fab" color="primary" aria-label="Add" className={classes.button}>

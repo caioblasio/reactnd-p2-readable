@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { handleInitialData } from '../actions/shared';
+
 import { fetchCategories } from '../actions/categories';
-import SearchAppBar from './SearchAppBar';
-import ResponsiveDrawer from './Drawer';
+import Header from './Header';
 
 import blue from '@material-ui/core/colors/blue';
 import grey from '@material-ui/core/colors/grey';
@@ -14,7 +13,8 @@ import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/
 
 import Home from './Home';
 import Category from './Category';
-import NewPost from './NewPost';
+
+import ManagePost from './ManagePost';
 import PostDetail from './PostDetail';
 
 import classNames from 'classnames';
@@ -83,8 +83,7 @@ class App extends Component {
           <Router>
             <Fragment>
               <CssBaseline />
-              <SearchAppBar/>
-              <ResponsiveDrawer/>
+              <Header/>
               {isLoading &&
                 <LinearProgress color="secondary" className={classes.loading}/>
               }
@@ -95,11 +94,11 @@ class App extends Component {
                 <Fragment>
                   <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route exact path="/new" component={NewPost} />
+                    <Route exact path="/new" component={ManagePost} />
                     <Route
                       exact path="/edit/:post"
                       render={props => (
-                        <NewPost postId={props.match.params.post} />
+                        <ManagePost edit postId={props.match.params.post} />
                       )}
                     />
                     <Route

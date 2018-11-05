@@ -3,10 +3,11 @@ import { RECEIVE_POSTS, EDIT_POST, ADD_POST, REMOVE_POST } from '../actions/post
 export default function posts (state = {}, action) {
   switch(action.type) {
     case RECEIVE_POSTS :
+      let newPosts = action.posts.hasOwnProperty('error') ? {} : {...action.posts}
       return {
         ...state,
         //...action.posts.reduce((acc, post) => ({ ...acc, [post.id]: post}), {})
-        ...action.posts
+        ...newPosts
       }
     case EDIT_POST:
       return {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
-import { getFormatedDate } from '../utils/date';
+import { getFormatedDate } from '../../utils/date';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -16,9 +16,9 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import { removePost } from '../actions/posts';
 
-import VoteControl from './VoteControl';
+
+import VoteControl from '../VoteControl';
 
 
 const styles = theme => ({
@@ -64,11 +64,13 @@ class Post extends Component {
   };
 
   handleRemovePost = () =>{
-     const { dispatch, post } = this.props;
+     const { onDelete, post } = this.props;
      const alertConfirmation = window.confirm(
         `Are you sure you want to delete the post '${post.title}'?`
       )
-    if (alertConfirmation) dispatch(removePost(post.id))
+    if (alertConfirmation) {
+      onDelete(post.id)
+    }
 
     this.handleMenuClose();
   }
@@ -145,11 +147,4 @@ class Post extends Component {
   }
 }
 
-function mapStateToProps({ posts }, { id }) {
-  const post = posts[id]
-  return {
-    post: post
-  }
-}
-
-export default withStyles(styles)(connect(mapStateToProps)(Post))
+export default withStyles(styles)(Post)

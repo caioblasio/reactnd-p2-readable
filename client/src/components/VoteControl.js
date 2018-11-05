@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withStyles } from '@material-ui/core/styles';
 
 import { addVoteToPost } from '../actions/posts';
 import { addVoteToComment } from '../actions/comments';
@@ -10,34 +9,69 @@ import Typography from '@material-ui/core/Typography';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 
-const styles = theme => ({
-  
-});
+import { checkVote, saveVote } from '../utils/locaStorage';
 
 class VoteControl extends Component {
 
+  state = {
+    currentVote: checkVote(this.props.id)
+  }
 
-  handleVote = vote => {
-    const { id, dispatch, type, voteScore } = this.props;
+  score = this.props.voteScore;
 
-    let score = voteScore; //props are readOnly
-    vote === 'upVote' ? score++ : score--;
-    const changes = { voteScore: score }
+  handleVote = newVote => {
+    const { currentVote } = this.state
 
-    dispatch(
-      type === 'post'
-        ? addVoteToPost(id, changes, vote)
-        : addVoteToComment(id, changes, vote)
-    )
+    if (currentVote && currentVote === newVote) {
+      this.cancel(newVote)
+    } else if (currentVote) {
+      this.cancel(currentVote)
+      this.apply(newVote)
+    } else {
+      this.apply(newVote)
+    }
+  }
+
+  cancel = vote => {
+    if (vote === 'upVote') {
+      this.handleDispatchVote('downVote')
+    } else if (vote === 'downVote') {
+      this.handleDispatchVote('upVote')
+    }
+
+    this.setState({ currentVote: null })
+    saveVote(this.props.id, null)
+  }
+
+  apply = vote => {
+    saveVote(this.props.id, vote)
+    this.handleDispatchVote(vote)
+    this.setState({ currentVote: vote })
+  }
+
+
+  handleDispatchVote = vote => {
+    
+    const { id, addVoteToPost, addVoteToComment, type } = this.props;
+    vote === 'upVote' ? this.score++ : this.score--;
+    const changes = { voteScore: this.score }
+
+    type === 'post'
+      ? addVoteToPost(id, changes, vote)
+      : addVoteToComment(id, changes, vote)
+    
   }
 
   render() {
-    const { classes, voteScore } = this.props;
+    const { currentVote } = this.state,
+      { voteScore } = this.props;
+
     return (
       <Fragment>
         <IconButton 
           aria-label="Like"
           onClick={() => this.handleVote('upVote')}
+          color={currentVote === 'upVote'? 'primary' : 'default'}
         >
           <ThumbUp />
         </IconButton>
@@ -47,6 +81,7 @@ class VoteControl extends Component {
         <IconButton 
           aria-label="Dislike"
           onClick={() => this.handleVote('downVote')}
+          color={currentVote === 'downVote'? 'primary' : 'default'}
         >
           <ThumbDown />
         </IconButton>
@@ -55,4 +90,15 @@ class VoteControl extends Component {
   }
 }
 
-export default withStyles(styles)(connect()(VoteControl))
+const mapDispatchToProps = dispatch => {
+  return {
+    addVoteToPost: (id, changes, vote) => {
+      dispatch(addVoteToPost(id, changes, vote))
+    },
+    addVoteToComment: (id, changes, vote) => {
+      dispatch(addVoteToComment(id, changes, vote))
+    },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(VoteControl);
