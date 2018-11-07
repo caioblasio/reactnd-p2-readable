@@ -19,7 +19,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 import VoteControl from '../VoteControl';
-
+import FavoriteControl from '../FavoriteControl';
 
 const styles = theme => ({
   card: {
@@ -131,6 +131,9 @@ class Post extends Component {
               />
             </div>
             <div className={classes.actionIcon} >
+              <FavoriteControl
+                id={id}
+              />
               <IconButton
                 aria-label="Comments"
               >

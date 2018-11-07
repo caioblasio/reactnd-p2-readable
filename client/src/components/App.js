@@ -16,6 +16,7 @@ import Category from './Category';
 
 import ManagePost from './ManagePost';
 import PostDetail from './PostDetail';
+import Favorites from './Favorites';
 
 import classNames from 'classnames';
 
@@ -95,6 +96,7 @@ class App extends Component {
                   <Switch>
                     <Route exact path='/' component={Home} />
                     <Route exact path="/new" component={ManagePost} />
+                    <Route exact path="/favorites" component={Favorites} />
                     <Route
                       exact path="/edit/:post"
                       render={props => (

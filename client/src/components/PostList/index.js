@@ -56,7 +56,7 @@ class PostList extends Component {
   }
 }
 
-const mapStateToProps = ({ posts, sort }, { category, excludeId }) => {
+const mapStateToProps = ({ posts, sort }, { category, excludeId, includeOnlyIds }) => {
   
   let sortedPosts = sortList(Object.keys(posts).map(key => posts[key]), sort);
 
@@ -66,6 +66,10 @@ const mapStateToProps = ({ posts, sort }, { category, excludeId }) => {
 
   if(excludeId){
     sortedPosts = sortedPosts.filter(post => post.id !== excludeId)
+  }
+
+  if(includeOnlyIds){
+    sortedPosts = sortedPosts.filter(post => includeOnlyIds.includes(post.id))
   }
 
   return {

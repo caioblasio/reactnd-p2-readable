@@ -77,12 +77,14 @@ class ResponsiveDrawer extends React.Component {
               <ListItemText primary="Create Post" />
             </ListItem>
           </Link>
-          <ListItem button>
-            <ListItemIcon>
-              <StarIcon />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItem>
+          <Link to="/favorites" className={classes.link}>
+            <ListItem button>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <ListItemText primary="Favorites" />
+            </ListItem>
+          </Link>
         </List>
       </Fragment>
     );

@@ -9,12 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 
-import { checkVote, saveVote } from '../utils/locaStorage';
+import { checkValue, saveValue } from '../utils/locaStorage';
 
 class VoteControl extends Component {
 
   state = {
-    currentVote: checkVote(this.props.id)
+    currentVote: checkValue('votes', this.props.id)
   }
 
   score = this.props.voteScore;
@@ -40,11 +40,11 @@ class VoteControl extends Component {
     }
 
     this.setState({ currentVote: null })
-    saveVote(this.props.id, null)
+    saveValue('votes', this.props.id, null)
   }
 
   apply = vote => {
-    saveVote(this.props.id, vote)
+    saveValue('votes', this.props.id, vote)
     this.handleDispatchVote(vote)
     this.setState({ currentVote: vote })
   }
