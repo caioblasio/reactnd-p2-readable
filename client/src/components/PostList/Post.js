@@ -43,6 +43,7 @@ const styles = theme => ({
   },
   footer: {
     marginTop: 'auto',
+    paddingRight: theme.spacing.unit,
   }
 });
 
@@ -82,7 +83,7 @@ class Post extends Component {
     const open = Boolean(anchorEl);
 
     return (
-      <Card className={classes.card}>
+      <Card className={`${classes.card} post`}>
         <Menu
           id="long-menu"
           anchorEl={anchorEl}
@@ -112,7 +113,7 @@ class Post extends Component {
             </IconButton>
             }
             title={title}
-            subheader={`by ${author} ${getFormatedDate(timestamp)}`}
+            subheader={`by ${author} ${getFormatedDate(timestamp)} ${category}`}
           />
           <CardContent>
             <Typography component="p">

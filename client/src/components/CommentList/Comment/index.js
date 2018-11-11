@@ -39,7 +39,7 @@ class Comment extends Component {
       
     return(
       <div className={classes.root}>
-        <Typography variant="body1" color="secondary" className={classes.contentItem}>
+        <Typography variant="body1" color="default" className={classes.contentItem}>
           by <strong>{author}</strong><span className={classes.headlineItems}>{getFormatedDate(timestamp)}</span>
         </Typography>
         {edit 

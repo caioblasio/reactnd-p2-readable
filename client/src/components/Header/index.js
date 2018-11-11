@@ -1,28 +1,39 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-
-import { toggleDrawer } from '../../actions/drawer';
-import { changeSort } from '../../actions/sort';
+import { withRouter } from 'react-router-dom';
+import { openDrawer, closeDrawer } from '../../actions/drawer';
+import { changeSearch } from '../../actions/search';
 
 import SearchAppBar from './SearchAppBar';
 import ResponsiveDrawer from './Drawer';
 
+import { isMobile } from 'react-device-detect';
+
 class Header extends Component {
 
+  componentWillReceiveProps({ history, isOpen, closeDrawer }) {   
+    history.listen(() => {
+      if(isMobile && isOpen)
+        closeDrawer();
+    });
+  }
 
   render(){
-    const { isOpen, categories, sort, toggleDrawer, handleSort } = this.props;
+    const { isOpen, categories, sort, openDrawer, closeDrawer, changeSearch } = this.props;
     return (
       <Fragment>
         <SearchAppBar
-          toggleDrawer={toggleDrawer}
+          changeSearch={changeSearch}
+          openDrawer={openDrawer}
+          closeDrawer={closeDrawer}
+          isOpen={isOpen}
         />
         <ResponsiveDrawer 
           isOpen={isOpen}
           categories={categories}
           sort={sort}
-          toggleDrawer={toggleDrawer}
-          handleSort={handleSort}
+          openDrawer={openDrawer}
+          closeDrawer={closeDrawer}
         />
       </Fragment>
     )
@@ -31,13 +42,18 @@ class Header extends Component {
 
 const mapStateToProps = ({ drawer, categories }) => ({ isOpen: drawer, categories })
   
-
 const mapDispatchToProps = dispatch => {
   return {
-    toggleDrawer: () => {
-      dispatch(toggleDrawer())
+    openDrawer: () => {
+      dispatch(openDrawer())
+    },
+    closeDrawer: () => {
+      dispatch(closeDrawer())
+    },
+    changeSearch: (query) => {
+      dispatch(changeSearch(query))
     }
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header));

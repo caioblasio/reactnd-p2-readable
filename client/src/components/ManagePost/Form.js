@@ -154,7 +154,7 @@ class Form extends Component {
         </SelectValidator>
 
        <div className={classes.submit}>
-        <Button variant="outlined" color="secondary" className={classes.button} onClick={() => {this.props.history.goBack()}}>
+        <Button variant="outlined" color="default" className={classes.button} onClick={() => {this.props.history.goBack()}}>
           Back
         </Button> 
         <Button variant="contained" color="primary" type="submit" className={classes.button}>

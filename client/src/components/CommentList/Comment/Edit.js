@@ -66,7 +66,7 @@ class Edit extends Component {
           errorMessages={['This field is required']}
         />
        <div className={classes.submit}>
-        <Button variant="outlined" color="secondary" className={classes.button} onClick={() => {toggleEdit(false)}}>
+        <Button variant="outlined" color="default" className={classes.button} onClick={() => {toggleEdit(false)}}>
           Cancel
         </Button> 
         <Button variant="contained" color="primary" type="submit" className={classes.button}>

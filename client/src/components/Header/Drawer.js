@@ -41,7 +41,7 @@ const styles = theme => ({
 class ResponsiveDrawer extends React.Component {
 
   render() {
-    const { isOpen, categories, toggleDrawer, classes, theme } = this.props;
+    const { isOpen, categories, closeDrawer, classes, theme } = this.props;
 
     const drawer = (
       <Fragment>
@@ -96,7 +96,7 @@ class ResponsiveDrawer extends React.Component {
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={isOpen}
-            onClose={toggleDrawer}
+            onClose={closeDrawer}
             classes={{
               paper: classes.drawerPaper,
             }}

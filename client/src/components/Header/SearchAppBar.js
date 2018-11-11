@@ -12,7 +12,6 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleDrawer } from '../../actions/drawer';
 
 const styles = theme => ({
 
@@ -70,9 +69,9 @@ const styles = theme => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('sm')]: {
-      width: 120,
+      width: 180,
       '&:focus': {
-        width: 200,
+        width: 240,
       },
     },
   },
@@ -82,9 +81,35 @@ const styles = theme => ({
 
 class SearchAppBar extends Component {
 
+  state = {
+    query: '',
+    typingTimeout: 0
+  };
+
+  /**
+  * @description Handles change at input field with debounce
+  * @param {object} event
+  */
+  handleChange = (event) => {
+
+    const { changeSearch } = this.props;
+    const self = this;
+    const query = event.target.value;
+
+    if (self.state.typingTimeout) {
+      clearTimeout(self.state.typingTimeout);
+    }
+
+    this.setState({
+      query,
+      typingTimeout: setTimeout(function () {
+        changeSearch(query.toLowerCase());
+      }, 500)
+    });
+  };
 
   render() {
-    const { toggleDrawer, classes } = this.props;
+    const { isOpen, openDrawer, closeDrawer, classes } = this.props;
     return (
       <Fragment>
         <AppBar position="fixed" className={classes.appBar}>
@@ -93,7 +118,7 @@ class SearchAppBar extends Component {
               className={classes.menuButton} 
               color="inherit" 
               aria-label="Open drawer"
-              onClick={toggleDrawer}
+              onClick={isOpen ? closeDrawer : openDrawer}
               >
               <MenuIcon />
             </IconButton>
@@ -108,11 +133,13 @@ class SearchAppBar extends Component {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Search for posts…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+                value={this.state.query}
+                onChange={this.handleChange}
               />
             </div>
           </Toolbar>

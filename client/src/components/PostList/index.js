@@ -41,11 +41,15 @@ class PostList extends Component {
   }
   
   render() {
-    const { posts, deletePost, handleSort, sort, headline, classes } = this.props
+    const { posts, deletePost, handleSort, sort, headline, side, classes } = this.props;
+
+    if(!posts.length && side){
+      return <Headline title="No Related Posts" side={side} />
+    }
 
     return (
       <Fragment>
-        <Headline title={headline} onSort={handleSort} sortOption={sort}/>
+        <Headline title={headline} onSort={handleSort} sortOption={sort} side={side} />
         <div className={classes.list}>
           {posts.map(post => (
             <Post key={post.id} post={post} onDelete={deletePost}/>
@@ -56,7 +60,7 @@ class PostList extends Component {
   }
 }
 
-const mapStateToProps = ({ posts, sort }, { category, excludeId, includeOnlyIds }) => {
+const mapStateToProps = ({ posts, sort, search }, { category, excludeId, includeOnlyIds, maxQty }) => {
   
   let sortedPosts = sortList(Object.keys(posts).map(key => posts[key]), sort);
 
@@ -70,6 +74,18 @@ const mapStateToProps = ({ posts, sort }, { category, excludeId, includeOnlyIds 
 
   if(includeOnlyIds){
     sortedPosts = sortedPosts.filter(post => includeOnlyIds.includes(post.id))
+  }
+
+  if(search){
+    sortedPosts = sortedPosts.filter(post => 
+      post.title.toLowerCase().includes(search) ||
+      post.author.toLowerCase().includes(search) || 
+      post.category.toLowerCase().includes(search)
+    )
+  }
+
+  if (maxQty) {
+    sortedPosts = sortedPosts.slice(0, maxQty)
   }
 
   return {

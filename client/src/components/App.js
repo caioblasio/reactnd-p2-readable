@@ -7,6 +7,7 @@ import Header from './Header';
 
 import blue from '@material-ui/core/colors/blue';
 import grey from '@material-ui/core/colors/grey';
+import green from '@material-ui/core/colors/green';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
@@ -23,7 +24,8 @@ import classNames from 'classnames';
 const theme = createMuiTheme({
   palette: {
     primary: blue,
-    secondary: grey,
+   secondary: green,
+
   },
   typography: {
     useNextVariants: true,
@@ -49,6 +51,9 @@ const styles = {
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing.unit * 2,
+    },
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -60,7 +65,10 @@ const styles = {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: theme.drawerWidth,
+    
+    [theme.breakpoints.up('md')]: {
+      marginLeft: theme.drawerWidth,
+    },
   },
   loading: {
     position: 'absolute',
@@ -86,7 +94,7 @@ class App extends Component {
               <CssBaseline />
               <Header/>
               {isLoading &&
-                <LinearProgress color="secondary" className={classes.loading}/>
+                <LinearProgress color="default" className={classes.loading}/>
               }
               <div className={classNames(classes.content, {
                   [classes.contentShift]: isOpen,

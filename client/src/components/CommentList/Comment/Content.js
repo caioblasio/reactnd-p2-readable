@@ -42,7 +42,7 @@ class Content extends Component {
 
     return (
       <Fragment>
-        <Typography variant="body1" color="secondary" className={classes.contentItem}>
+        <Typography variant="body1" color="default" className={classes.contentItem}>
           {body}
         </Typography>
         <div className={classes.action}>

@@ -1,9 +1,12 @@
-import { TOGGLE_DRAWER } from '../actions/drawer';
+import { OPEN_DRAWER, CLOSE_DRAWER } from '../actions/drawer';
+import { isMobile } from 'react-device-detect';
 
-export default function posts (state = true, action) {
+export default function posts (state = !isMobile, action) {
   switch(action.type) {
-    case TOGGLE_DRAWER :
-      return !state
+    case OPEN_DRAWER:
+      return true
+    case CLOSE_DRAWER:
+      return false
     default :
       return state
   }

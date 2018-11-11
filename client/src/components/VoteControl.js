@@ -71,7 +71,7 @@ class VoteControl extends Component {
         <IconButton 
           aria-label="Like"
           onClick={() => this.handleVote('upVote')}
-          color={currentVote === 'upVote'? 'primary' : 'default'}
+          color={currentVote === 'upVote'? 'secondary' : 'default'}
         >
           <ThumbUp />
         </IconButton>
@@ -81,7 +81,7 @@ class VoteControl extends Component {
         <IconButton 
           aria-label="Dislike"
           onClick={() => this.handleVote('downVote')}
-          color={currentVote === 'downVote'? 'primary' : 'default'}
+          color={currentVote === 'downVote'? 'secondary' : 'default'}
         >
           <ThumbDown />
         </IconButton>

@@ -25,7 +25,7 @@ class CommentList extends Component {
     return (
       <div className={classes.root}>
         
-        <Typography variant="body2" color="secondary">
+        <Typography variant="body2" color="default">
           <strong>{ comments.length > 0 ? `${comments.length} comment(s)` : `No comments` }</strong>
         </Typography>
         {comments.map(comment => (

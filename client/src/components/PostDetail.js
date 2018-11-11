@@ -23,11 +23,13 @@ import NotFound from './NotFound';
 
 const styles = theme => ({
   root: {
-    display: 'flex',
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      width: '100%',
+    },
   },
   post: {
-    width: '70%',
-    margin: '0 auto',
+    flex: '0 1 70%',
   },
   detail: {
     ...theme.mixins.gutters(),
@@ -40,7 +42,7 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     paddingTop: theme.spacing.unit * 2,
     paddingBottom: theme.spacing.unit * 2,
-    width: '30%',
+    flex: '0 1 30%',
   },
   headline: {
     marginTop: theme.spacing.unit,
@@ -100,13 +102,13 @@ class PostDetail extends Component {
           <div className={classes.root}>
             <div className={classes.post}>
               <Paper className={classes.detail} elevation={1}>
-                <Typography variant="h5" color="secondary">
+                <Typography variant="h5" color="default">
                   {post.title}
                 </Typography>
-                <Typography variant="body1" color="secondary" className={classes.headline}>
+                <Typography variant="body1" color="default" className={classes.headline}>
                   by <strong>{post.author}</strong><span className={classes.headlineItems}>{getFormatedDate(post.timestamp)}</span><strong>{post.category}</strong>
                 </Typography>
-                <Typography variant="body1" color="secondary" className={classes.body}>
+                <Typography variant="body1" color="default" className={classes.body}>
                   {post.body}
                 </Typography>
 
@@ -145,15 +147,18 @@ class PostDetail extends Component {
               </Paper>
             </div>
             
-            {/* <div className={classes.side}>
-              <Typography variant="body1" color="secondary" className={classes.body}>
-                Related Posts
-              </Typography>
+            <div className={classes.side}>
               <PostList
+                headline="Related Posts"
+                side
+                maxQty={4}
                 category={post.category}
                 excludeId={post.id}
               />
-            </div> */}
+            </div>
+
+             
+
          </div>
         }
       </Fragment>

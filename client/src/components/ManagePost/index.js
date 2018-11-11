@@ -12,8 +12,10 @@ import { addPost, editPost, fetchPostById } from '../../actions/posts';
 
 const styles = theme => ({
   root: {
-    width: '70%',
-    margin: '0 auto',
+    [theme.breakpoints.up('md')]: {
+      width: '70%',
+      margin: '0 auto',
+    },
     padding: 0,
   },
   header: {
