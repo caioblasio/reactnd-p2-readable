@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/components/PostList/index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/components/PostList</a> index.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/50</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/21</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/45</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { Component, Fragment } from 'react';</span>
+<span class="cstat-no" title="statement not covered" >import { connect } from 'react-redux';</span>
+<span class="cstat-no" title="statement not covered" >import { withStyles } from '@material-ui/core/styles';</span>
+<span class="cstat-no" title="statement not covered" >import Post from './Post';</span>
+<span class="cstat-no" title="statement not covered" >import Headline from './Headline';</span>
+<span class="cstat-no" title="statement not covered" >import sortList from '../../utils/sort';</span>
+<span class="cstat-no" title="statement not covered" >import { changeSort } from '../../actions/sort';</span>
+<span class="cstat-no" title="statement not covered" >import { fetchPosts, fetchPostsByCategory, removePost } from '../../actions/posts';</span>
+&nbsp;
+const styles = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >theme</span> =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+  list: {
+    display: 'flex',
+    flexWrap: 'wrap',
+&nbsp;
+  },
+  loading: {
+    marginTop: theme.spacing.unit * 4,
+    textAlign: 'center',
+  }
+});
+&nbsp;
+class PostList extends Component {
+&nbsp;
+<span class="fstat-no" title="function not covered" >  componentDidMount</span>()<span class="cstat-no" title="statement not covered" >{</span>
+    const { category, fetchPosts, fetchPostsByCategory } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if(category){</span>
+<span class="cstat-no" title="statement not covered" >      fetchPostsByCategory(category);</span>
+    } else {
+<span class="cstat-no" title="statement not covered" >      fetchPosts(</span>);
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  componentDidUpdate</span>(prevProps)<span class="cstat-no" title="statement not covered" >{</span>
+    const { category, fetchPostsByCategory } = <span class="cstat-no" title="statement not covered" >this.props</span>
+    const prevCategory = <span class="cstat-no" title="statement not covered" >prevProps.category</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (prevCategory !== category) {</span>
+<span class="cstat-no" title="statement not covered" >      fetchPostsByCategory(category);</span>
+    }
+  }
+  
+<span class="fstat-no" title="function not covered" >  render</span>() <span class="cstat-no" title="statement not covered" >{</span>
+    const { posts, deletePost, handleSort, sort, headline, side, classes } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if(!posts.length &amp;&amp; side){</span>
+<span class="cstat-no" title="statement not covered" >      return &lt;Headline title="No Related Posts" side={side} /&gt;</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return (</span>
+      &lt;Fragment&gt;
+        &lt;Headline title={headline} onSort={handleSort} sortOption={sort} side={side} /&gt;
+        &lt;div className={classes.list}&gt;
+          {posts.map(<span class="fstat-no" title="function not covered" >post</span> =&gt; (
+<span class="cstat-no" title="statement not covered" >            &lt;Post key={post.id} post={post} onDelete={deletePost}/&gt;</span>
+          ))}
+        &lt;/div&gt;
+      &lt;/Fragment&gt;
+    )
+  }
+}
+&nbsp;
+const mapStateToProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> posts, sort, search }, { category, excludeId, includeOnlyIds, maxQty }) =&gt; {</span>
+  
+  let sortedPosts = <span class="cstat-no" title="statement not covered" >sortList(Object.keys(posts).map(<span class="fstat-no" title="function not covered" >key</span> =&gt; <span class="cstat-no" title="statement not covered" >posts[key]), sort);</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(category){</span>
+<span class="cstat-no" title="statement not covered" >    sortedPosts = sortedPosts.filter(<span class="fstat-no" title="function not covered" >post</span> =&gt; <span class="cstat-no" title="statement not covered" >post.category === category)</span></span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(excludeId){</span>
+<span class="cstat-no" title="statement not covered" >    sortedPosts = sortedPosts.filter(<span class="fstat-no" title="function not covered" >post</span> =&gt; <span class="cstat-no" title="statement not covered" >post.id !== excludeId)</span></span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(includeOnlyIds){</span>
+<span class="cstat-no" title="statement not covered" >    sortedPosts = sortedPosts.filter(<span class="fstat-no" title="function not covered" >post</span> =&gt; <span class="cstat-no" title="statement not covered" >includeOnlyIds.includes(post.id))</span></span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if(search){</span>
+<span class="cstat-no" title="statement not covered" >    sortedPosts = sortedPosts.filter(<span class="fstat-no" title="function not covered" >post</span> =&gt; </span>
+<span class="cstat-no" title="statement not covered" >      post.title.toLowerCase().includes(search) ||</span>
+      post.author.toLowerCase().includes(search) || 
+      post.category.toLowerCase().includes(search)
+    )
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  if (maxQty) {</span>
+<span class="cstat-no" title="statement not covered" >    sortedPosts = sortedPosts.slice(0, maxQty)</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    posts: sortedPosts,
+    sort
+  }
+}
+&nbsp;
+&nbsp;
+const mapDispatchToProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >dispatch</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >  return {</span>
+    fetchPosts: <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+<span class="cstat-no" title="statement not covered" >      dispatch(fetchPosts())</span>
+    },
+    fetchPostsByCategory: (<span class="fstat-no" title="function not covered" >category) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch(fetchPostsByCategory(category))</span>
+    },
+    deletePost: (<span class="fstat-no" title="function not covered" >id) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch(removePost(id))</span>
+    },
+    handleSort: (<span class="fstat-no" title="function not covered" >value) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch(changeSort(value))</span>
+    }
+  }
+}
+&nbsp;
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(PostList))</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 12 2018 21:10:47 GMT-0200 (-02)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
