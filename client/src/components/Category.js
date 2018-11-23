@@ -27,9 +27,7 @@ class Category extends Component {
     return (
       <Fragment>
         {category
-          ? <Fragment>
-              <PostList headline={category.name} category={category.path} />
-            </Fragment>
+          ? <PostList headline={category.name} category={category.path} />
           : <NotFound/>
         }
         <Link to="/new">

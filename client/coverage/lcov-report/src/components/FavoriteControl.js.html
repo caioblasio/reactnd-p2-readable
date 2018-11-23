@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/11</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>0/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/11</span>
+        <span class='fraction'>0/6</span>
       </div>
     </div>
   </div>
@@ -82,36 +82,32 @@
 37
 38
 39
-40</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+40</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -121,21 +117,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { Component, Fragment } from 'react';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, Fragment } from 'react';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import IconButton from '@material-ui/core/IconButton';</span>
+import IconButton from '@material-ui/core/IconButton';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import Star from '@material-ui/icons/Star';</span>
+import Star from '@material-ui/icons/Star';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import { checkValue, saveValue } from '../utils/locaStorage';</span>
+import { checkValue, saveValue } from '../utils/locaStorage';
 &nbsp;
-class FavoriteControl extends Component <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{</span></span>
+class FavoriteControl extends Component {
 &nbsp;
   state = {
     currentFavorite: checkValue('favorites', this.props.id)
   }
 &nbsp;
-  toggleFavorite = <span class="fstat-no" title="function not covered" >() =&gt; </span>{
+  toggleFavorite = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
     const { currentFavorite } = <span class="cstat-no" title="statement not covered" >this.state;</span>
     const newFavorite = <span class="cstat-no" title="statement not covered" >!currentFavorite;</span>
 <span class="cstat-no" title="statement not covered" >    saveValue('favorites', this.props.id, newFavorite)</span>
@@ -143,7 +143,7 @@ class FavoriteControl extends Component <span class="cstat-no" title="statement 
   }
 &nbsp;
 &nbsp;
-<span class="fstat-no" title="function not covered" >  render</span>() {
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
     const { currentFavorite } = <span class="cstat-no" title="statement not covered" >this.state;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
@@ -166,7 +166,7 @@ export default FavoriteControl;</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 12 2018 21:10:47 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 22 2018 23:35:45 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../prettify.js"></script>

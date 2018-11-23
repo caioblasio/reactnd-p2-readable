@@ -64,7 +64,7 @@ class VoteControl extends Component {
 
   render() {
     const { currentVote } = this.state,
-      { voteScore } = this.props;
+      { voteScore, classes } = this.props;
 
     return (
       <Fragment>

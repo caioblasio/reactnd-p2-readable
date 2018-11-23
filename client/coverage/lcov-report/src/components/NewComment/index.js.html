@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/18</span>
+        <span class='fraction'>2/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>0/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">22.22% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>2/9</span>
       </div>
     </div>
   </div>
@@ -89,36 +89,15 @@
 44
 45
 46
-47</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+47</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,35 +108,56 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { Component, Fragment } from 'react';</span>
-<span class="cstat-no" title="statement not covered" >import { connect } from 'react-redux';</span>
-<span class="cstat-no" title="statement not covered" >import { withStyles } from '@material-ui/core/styles';</span>
-<span class="cstat-no" title="statement not covered" >import Form from './Form';</span>
-<span class="cstat-no" title="statement not covered" >import Typography from '@material-ui/core/Typography';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
+import Form from './Form';
+import Typography from '@material-ui/core/Typography';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import { addComment } from '../../actions/comments';</span>
+import { addComment } from '../../actions/comments';
 &nbsp;
-const styles = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >theme</span> =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+const styles = <span class="fstat-no" title="function not covered" >th</span>eme =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
   root: {
     marginTop: theme.spacing.unit * 2,
   },
 });
 &nbsp;
-class NewComment extends Component <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >{</span></span>
+class NewComment extends Component {
 &nbsp;
-  handleSubmit = (<span class="fstat-no" title="function not covered" >comment) =&gt; <span class="cstat-no" title="statement not covered" >{</span></span>
+  handleSubmit = <span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; {
     const { addComment, parentId } = <span class="cstat-no" title="statement not covered" >this.props;</span>
 <span class="cstat-no" title="statement not covered" >    comment.parentId = parentId;</span>
 <span class="cstat-no" title="statement not covered" >    addComment(comment);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  render</span>() {
+<span class="fstat-no" title="function not covered" >  re</span>nder() {
     const { classes } = <span class="cstat-no" title="statement not covered" >this.props;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
@@ -173,9 +173,9 @@ class NewComment extends Component <span class="cstat-no" title="statement not c
   }
 }
 &nbsp;
-const mapDispatchToProps = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >dispatch</span> =&gt; {</span>
+const mapDispatchToProps = <span class="fstat-no" title="function not covered" >di</span>spatch =&gt; {
 <span class="cstat-no" title="statement not covered" >  return {</span>
-    addComment: (<span class="fstat-no" title="function not covered" >comment) =&gt; {</span>
+    addComment: <span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; {
 <span class="cstat-no" title="statement not covered" >      dispatch(addComment(comment))</span>
     }
   }
@@ -187,7 +187,7 @@ export default withStyles(styles)(connect(null, mapDispatchToProps)(NewComment))
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 12 2018 21:10:47 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 22 2018 23:35:45 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

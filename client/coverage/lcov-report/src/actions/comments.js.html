@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">17.39% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/25</span>
+        <span class='fraction'>4/23</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/19</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">17.39% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/25</span>
+        <span class='fraction'>4/23</span>
       </div>
     </div>
   </div>
@@ -115,34 +115,27 @@
 70
 71
 72
-73</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+73</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,8 +155,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -182,71 +175,78 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import * as ContentAPI from '../utils/contentAPI';</span>
-<span class="cstat-no" title="statement not covered" >import { showLoading, hideLoading } from '../actions/loading';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as ContentAPI from '../utils/contentAPI';
+import { showLoading, hideLoading } from '../actions/loading';
 &nbsp;
-export const RECEIVE_COMMENTS = <span class="cstat-no" title="statement not covered" >'RECEIVE_COMMENTS';</span>
-export const EDIT_COMMENT = <span class="cstat-no" title="statement not covered" >'EDIT_COMMENT';</span>
-export const ADD_COMMENT = <span class="cstat-no" title="statement not covered" >'ADD_COMMENT';</span>
-export const REMOVE_COMMENT = <span class="cstat-no" title="statement not covered" >'REMOVE_COMMENT';</span>
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const EDIT_COMMENT = 'EDIT_COMMENT';
+export const ADD_COMMENT = 'ADD_COMMENT';
+export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >fetchComments(postId) {</span>
-<span class="cstat-no" title="statement not covered" >  return (<span class="fstat-no" title="function not covered" >dispatch) =&gt; {</span></span>
+export function <span class="fstat-no" title="function not covered" >fetchComments(</span>postId) {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return ContentAPI.getCommentsByPostId(postId)</span>
-      .then(<span class="fstat-no" title="function not covered" >comments</span> =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_receiveComments(comments)))</span>
+      .then(<span class="fstat-no" title="function not covered" >co</span>mments =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_receiveComments(comments)))</span>
   }
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >addVoteToComment(id, changes, vote) {</span>
-<span class="cstat-no" title="statement not covered" >  return (<span class="fstat-no" title="function not covered" >dispatch) =&gt; {</span></span>
+export function <span class="fstat-no" title="function not covered" >addVoteToComment(</span>id, changes, vote) {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return ContentAPI.voteComment(id, vote)</span>
-      .then(<span class="fstat-no" title="function not covered" >() =&gt; </span>{
+      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        dispatch(_editComment(id, changes))</span>
       })
   }
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >addComment(comment) {</span>
-<span class="cstat-no" title="statement not covered" >  return (<span class="fstat-no" title="function not covered" >dispatch) =&gt; {</span></span>
+export function <span class="fstat-no" title="function not covered" >addComment(</span>comment) {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return ContentAPI.createComment(comment)</span>
-      .then((<span class="fstat-no" title="function not covered" >comment) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_addComment(comment)))</span></span>
+      .then(<span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_addComment(comment)))</span>
   }
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >removeComment(id) {</span>
-<span class="cstat-no" title="statement not covered" >  return (<span class="fstat-no" title="function not covered" >dispatch) =&gt; {</span></span>
+export function <span class="fstat-no" title="function not covered" >removeComment(</span>id) {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return ContentAPI.deleteComment(id)</span>
-      .then((<span class="fstat-no" title="function not covered" >comment) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_removeComment(comment.id)))</span></span>
+      .then(<span class="fstat-no" title="function not covered" >(c</span>omment) =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_removeComment(comment.id)))</span>
   }
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >editComment(id, changes) {</span>
-<span class="cstat-no" title="statement not covered" >  return (<span class="fstat-no" title="function not covered" >dispatch) =&gt; {</span></span>
+export function <span class="fstat-no" title="function not covered" >editComment(</span>id, changes) {
+<span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    return ContentAPI.editComment(id, changes)</span>
-      .then(<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>dispatch(_editComment(id, changes)))</span>
+      .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >dispatch(_editComment(id, changes)))</span>
   }
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >_addComment(comment) {</span>
+function <span class="fstat-no" title="function not covered" >_addComment(</span>comment) {
 <span class="cstat-no" title="statement not covered" >  return {</span>
     type: ADD_COMMENT,
     comment
   }
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >_removeComment(id) {</span>
+function <span class="fstat-no" title="function not covered" >_removeComment(</span>id) {
 <span class="cstat-no" title="statement not covered" >  return {</span>
     type: REMOVE_COMMENT,
     id
   }
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >_editComment(id, changes){</span>
+function <span class="fstat-no" title="function not covered" >_editComment(</span>id, changes){
 <span class="cstat-no" title="statement not covered" >  return {</span>
     type: EDIT_COMMENT,
     id,
@@ -254,7 +254,7 @@ function <span class="fstat-no" title="function not covered" >_editComment(id, c
   }
 }
 &nbsp;
-function <span class="fstat-no" title="function not covered" >_receiveComments(comments) {</span>
+function <span class="fstat-no" title="function not covered" >_receiveComments(</span>comments) {
 <span class="cstat-no" title="statement not covered" >  return {</span>
     type: RECEIVE_COMMENTS,
     comments,
@@ -265,7 +265,7 @@ function <span class="fstat-no" title="function not covered" >_receiveComments(c
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Nov 12 2018 21:10:47 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 22 2018 23:35:45 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../prettify.js"></script>

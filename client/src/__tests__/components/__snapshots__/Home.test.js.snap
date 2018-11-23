@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> renders the component 1`] = `
+<Fragment>
+  <WithStyles(Connect(PostList))
+    headline="All posts"
+  />
+  <Link
+    replace={false}
+    to="/new"
+  >
+    <WithStyles(Button)
+      aria-label="Add"
+      className="Home-button-1"
+      color="primary"
+      variant="fab"
+    >
+      <pure(AddIcon) />
+    </WithStyles(Button)>
+  </Link>
+</Fragment>
+`;
