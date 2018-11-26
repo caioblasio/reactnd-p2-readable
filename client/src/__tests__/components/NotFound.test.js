@@ -9,14 +9,18 @@ import Button from '@material-ui/core/Button';
 
 describe('<NotFound />', () => {
 
-    test('renders the component', () => {
-      const wrapper = shallow(<NotFound />);
+    it('renders the component', () => {
+      const wrapper = shallow(
+      <MemoryRouter>
+        <NotFound />
+      </MemoryRouter>
+      );
       const component = wrapper.dive();
 
-      expect(toJson(component)).toMatchSnapshot();
+      expect(toJson(component.dive())).toMatchSnapshot();
     });
 
-    test('Click on Go To Home button', () => {
+    it('Click on Go To Home button', () => {
 
       const mounted = mount(
         <MemoryRouter initialEntries={['/notexist']}>
@@ -29,7 +33,7 @@ describe('<NotFound />', () => {
       expect(mounted.find(Router).props('history').history.length).toBe(2);
     });
 
-    test('Click on Back button', () => {
+    it('Click on Back button', () => {
 
       const mounted = mount(
         <MemoryRouter initialEntries={['/', '/notexist']} initialIndex={1}>

@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>8/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>8/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/1</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/10</span>
+        <span class='fraction'>8/8</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -76,52 +76,52 @@
 31
 32
 33
-34</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+34</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { RECEIVE_POSTS, EDIT_POST, ADD_POST, REMOVE_POST } from '../actions/posts';</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { RECEIVE_POSTS, EDIT_POST, ADD_POST, REMOVE_POST } from '../actions/posts';
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >posts (state = <span class="branch-0 cbranch-no" title="branch not covered" >{}, action) {</span></span>
-<span class="cstat-no" title="statement not covered" >  switch(action.type) {</span>
+export default function posts (state = {}, action) {
+  switch(action.type) {
     case RECEIVE_POSTS :
-      let newPosts = <span class="cstat-no" title="statement not covered" >action.posts.hasOwnProperty('error') ? {} : {...action.posts}</span>
-<span class="cstat-no" title="statement not covered" >      return {</span>
+      let newPosts = action.posts.hasOwnProperty('error') ? {} : {...action.posts}
+      return {
         ...state,
         //...action.posts.reduce((acc, post) =&gt; ({ ...acc, [post.id]: post}), {})
         ...newPosts
       }
     case EDIT_POST:
-<span class="cstat-no" title="statement not covered" >      return {</span>
+      return {
         ...state,
         [action.id]: {
           ...state[action.id],
@@ -129,18 +129,18 @@ export default function <span class="fstat-no" title="function not covered" >pos
         }
       }
     case ADD_POST:
-<span class="cstat-no" title="statement not covered" >      return {</span>
+      return {
         ...state,
         [action.post.id]: {
           ...action.post
         }
       }
-<span class="cstat-no" title="statement not covered" >    case REMOVE_POST:</span>
-      let  {[action.id]: deleted, ...newState} = <span class="cstat-no" title="statement not covered" >state;</span>
-<span class="cstat-no" title="statement not covered" >      return newState</span>
+    case REMOVE_POST:
+      let  {[action.id]: deleted, ...newState} = state;
+      return newState
       
     default :
-<span class="cstat-no" title="statement not covered" >      return state</span>
+      return state
   }
 } </pre></td></tr>
 </table></pre>
@@ -148,7 +148,7 @@ export default function <span class="fstat-no" title="function not covered" >pos
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 22 2018 23:35:45 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 25 2018 21:45:49 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../prettify.js"></script>

@@ -14,7 +14,7 @@ describe('<Category />', () => {
 
   let wrapper, mounted, store;
 
-    beforeEach(() => {
+    beforeAll(() => {
 
       const initialState = {
         categories: testCategories
@@ -25,7 +25,7 @@ describe('<Category />', () => {
     });
   
 
-  test('should show get correct category as props', () => {
+  it('should show get correct category as props', () => {
     wrapper = shallow(
       <Category store={store} category="categoryone"/>
     );
@@ -34,7 +34,7 @@ describe('<Category />', () => {
     expect(component.props().category).toBe("categoryone");
   });
 
-  test('should show post list component', () => {
+  it('should show post list component', () => {
 
     wrapper = shallow(
       <Category store={store} category="categoryone"/>
@@ -46,7 +46,7 @@ describe('<Category />', () => {
 
   });
 
-  test('should show not found component', () => {
+  it('should show not found component', () => {
     mounted = mount(
       <MemoryRouter>
         <Category store={store} category="notexist"/>

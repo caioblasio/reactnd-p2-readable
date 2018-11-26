@@ -29,7 +29,7 @@ class CommentList extends Component {
           <strong>{ comments.length > 0 ? `${comments.length} comment(s)` : `No comments` }</strong>
         </Typography>
         {comments.map(comment => (
-          <Comment 
+          <Comment
             key={comment.id}
             comment={comment}
             onRemoveComment={removeComment}

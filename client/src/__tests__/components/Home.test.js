@@ -7,7 +7,7 @@ import Home from '../../components/Home';
 
 describe('<Home />', () => {
 
-    test('renders the component', () => {
+    it('renders the component', () => {
       const wrapper = shallow(<Home />);
       const component = wrapper.dive();
 

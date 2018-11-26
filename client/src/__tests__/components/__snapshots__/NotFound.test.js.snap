@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<NotFound /> renders the component 1`] = `
-<Route>
-  <Component />
-</Route>
+<withRouter(NotFound)
+  classes={
+    Object {
+      "actions": "withRouter-NotFound--actions-3",
+      "card": "withRouter-NotFound--card-1",
+      "link": "withRouter-NotFound--link-2",
+    }
+  }
+/>
 `;

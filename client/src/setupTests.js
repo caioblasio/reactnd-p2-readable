@@ -17,4 +17,4 @@ global.shallow = shallow;
 global.wrapper = wrapper;
 global.render = render;
 global.mount = mount;
-//global.fetch = require('jest-fetch-mock');
+global.fetch = require('jest-fetch-mock');
