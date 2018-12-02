@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PostDetail /> renders the component 1`] = `
+<Fragment>
+  <div
+    className="Connect-PostDetail--root-1"
+  >
+    <div
+      className="Connect-PostDetail--post-2"
+    >
+      <WithStyles(Paper)
+        className="Connect-PostDetail--detail-3"
+        elevation={1}
+      >
+        <WithStyles(Typography)
+          color="default"
+          variant="h5"
+        >
+          Udacity is the best place to learn React
+        </WithStyles(Typography)>
+        <WithStyles(Typography)
+          className="Connect-PostDetail--headline-5"
+          color="default"
+          variant="body1"
+        >
+          by 
+          <strong>
+            thingtwo
+          </strong>
+          <span
+            className="Connect-PostDetail--headlineItems-6"
+          >
+            Jun 28, 2016
+          </span>
+          <strong>
+            categoryone
+          </strong>
+        </WithStyles(Typography)>
+        <WithStyles(Typography)
+          className="Connect-PostDetail--body-7"
+          color="default"
+          variant="body1"
+        >
+          Everyone says so after all.
+        </WithStyles(Typography)>
+        <WithStyles(Divider)
+          className="Connect-PostDetail--divider-8"
+        />
+        <div
+          className="Connect-PostDetail--action-9"
+        >
+          <div
+            className="Connect-PostDetail--vote-10"
+          >
+            <Connect(VoteControl)
+              id="8xf0y6ziyjabvozdd253nd"
+              type="post"
+              voteScore={6}
+            />
+          </div>
+          <div>
+            <WithStyles(IconButton)
+              aria-label="Like"
+              onClick={[Function]}
+            >
+              <Link
+                className="Connect-PostDetail--link-11"
+                replace={false}
+                to="/edit/8xf0y6ziyjabvozdd253nd"
+              >
+                <pure(EditIcon) />
+              </Link>
+            </WithStyles(IconButton)>
+            <WithStyles(IconButton)
+              aria-label="Like"
+              onClick={[Function]}
+            >
+              <pure(DeleteIcon) />
+            </WithStyles(IconButton)>
+          </div>
+        </div>
+      </WithStyles(Paper)>
+      <WithStyles(Paper)
+        className="Connect-PostDetail--detail-3"
+        elevation={1}
+      >
+        <WithStyles(Connect(CommentList))
+          postId="8xf0y6ziyjabvozdd253nd"
+        />
+      </WithStyles(Paper)>
+      <WithStyles(Paper)
+        className="Connect-PostDetail--detail-3"
+        elevation={1}
+      >
+        <WithStyles(Connect(NewComment))
+          parentId="8xf0y6ziyjabvozdd253nd"
+        />
+      </WithStyles(Paper)>
+    </div>
+    <div
+      className="Connect-PostDetail--side-4"
+    >
+      <WithStyles(Connect(PostList))
+        category="categoryone"
+        excludeId="8xf0y6ziyjabvozdd253nd"
+        headline="Related Posts"
+        maxQty={4}
+        side={true}
+      />
+    </div>
+  </div>
+</Fragment>
+`;

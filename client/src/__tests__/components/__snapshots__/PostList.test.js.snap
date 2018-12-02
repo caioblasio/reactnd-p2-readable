@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Headline /> renders a Headline 1`] = `
+<Fragment>
+  <div
+    className="Headline-root-9"
+  >
+    <div
+      className="Headline-title-10 "
+    >
+      <WithStyles(Typography)
+        className="Headline-header-11"
+        variant="h5"
+      >
+        All Posts
+      </WithStyles(Typography)>
+    </div>
+    <div>
+      <WithStyles(Button)
+        aria-haspopup="true"
+        onClick={[Function]}
+        size="small"
+        variant="contained"
+      >
+        <pure(SortIcon)
+          className="Headline-leftIcon-12"
+        />
+        Sorted by score
+      </WithStyles(Button)>
+      <WithStyles(Menu)
+        anchorEl={null}
+        id="sort-options"
+        onClose={[Function]}
+        open={false}
+      >
+        <WithStyles(MenuItem)
+          onClick={[Function]}
+          selected={true}
+        >
+          Vote Score
+        </WithStyles(MenuItem)>
+        <WithStyles(MenuItem)
+          onClick={[Function]}
+          selected={false}
+        >
+          Date
+        </WithStyles(MenuItem)>
+      </WithStyles(Menu)>
+    </div>
+  </div>
+  <WithStyles(Divider) />
+</Fragment>
+`;
+
+exports[`<Post /> renders a posts 1`] = `
+<Card
+  className="Post-card-3 post"
+  classes={
+    Object {
+      "root": "MuiCard-root-8",
+    }
+  }
+  raised={false}
+>
+  <WithStyles(Menu)
+    anchorEl={null}
+    id="long-menu"
+    onClose={[Function]}
+    open={false}
+  >
+    <Link
+      className="Post-link-4"
+      replace={false}
+      to="/edit/8xf0y6ziyjabvozdd253nd"
+    >
+      <WithStyles(MenuItem)
+        onClick={[Function]}
+      >
+        Edit
+      </WithStyles(MenuItem)>
+    </Link>
+    <WithStyles(MenuItem)
+      onClick={[Function]}
+    >
+      Remove
+    </WithStyles(MenuItem)>
+  </WithStyles(Menu)>
+  <Link
+    className="Post-link-4"
+    replace={false}
+    to="/categoryone/8xf0y6ziyjabvozdd253nd"
+  >
+    <WithStyles(CardHeader)
+      action={
+        <WithStyles(IconButton)
+          aria-haspopup="true"
+          aria-label="More"
+          aria-owns={null}
+          onClick={[Function]}
+        >
+          <pure(MoreVertIcon) />
+        </WithStyles(IconButton)>
+      }
+      subheader="by thingtwo Jun 28, 2016 categoryone"
+      title="Udacity is the best place to learn React"
+    />
+    <WithStyles(CardContent)>
+      <WithStyles(Typography)
+        component="p"
+      >
+        Everyone says so after all....
+      </WithStyles(Typography)>
+    </WithStyles(CardContent)>
+  </Link>
+  <div
+    className="Post-footer-7"
+  >
+    <WithStyles(Divider) />
+    <WithStyles(CardActions)
+      className="Post-actions-5"
+      disableActionSpacing={true}
+    >
+      <div
+        className="Post-actionIcon-6"
+        style={
+          Object {
+            "flexGrow": 1,
+          }
+        }
+      >
+        <Connect(VoteControl)
+          id="8xf0y6ziyjabvozdd253nd"
+          type="post"
+          voteScore={6}
+        />
+      </div>
+      <div
+        className="Post-actionIcon-6"
+      >
+        <FavoriteControl
+          id="8xf0y6ziyjabvozdd253nd"
+        />
+        <WithStyles(IconButton)
+          aria-label="Comments"
+        >
+          <pure(CommentIcon) />
+        </WithStyles(IconButton)>
+        <WithStyles(Typography)
+          component="p"
+        >
+          2
+        </WithStyles(Typography)>
+      </div>
+    </WithStyles(CardActions)>
+  </div>
+</Card>
+`;

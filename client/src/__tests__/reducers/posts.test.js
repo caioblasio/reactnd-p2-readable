@@ -1,6 +1,6 @@
 import reducer from '../../reducers/posts';
 import * as types from '../../actions/posts';
-import { testPosts } from '../../testUtils/mockData/posts';
+import { testPosts } from '../../__mocks__/mockData';
 
 describe('Posts Reducer', () => {
 

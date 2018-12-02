@@ -11,7 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+
 
 const styles = theme => ({
 
@@ -153,4 +153,4 @@ SearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(connect()(SearchAppBar));
+export default withStyles(styles)(SearchAppBar);

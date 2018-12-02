@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Favorites /> renders the component 1`] = `
+<Fragment>
+  <WithStyles(Connect(PostList))
+    headline="Favorites"
+    includeOnlyIds={Array []}
+  />
+  <Link
+    replace={false}
+    to="/new"
+  >
+    <WithStyles(Button)
+      aria-label="Add"
+      className="Favorites-button-1"
+      color="primary"
+      variant="fab"
+    >
+      <pure(AddIcon) />
+    </WithStyles(Button)>
+  </Link>
+</Fragment>
+`;

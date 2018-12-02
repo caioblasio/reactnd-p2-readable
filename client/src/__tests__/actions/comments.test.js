@@ -1,8 +1,7 @@
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import * as CommentsActions from '../../actions/comments'; 
-import { testPosts } from '../../testUtils/mockData/posts';
-import { testComments } from '../../testUtils/mockData/comments';
+import { testPosts, testComments } from '../../__mocks__/mockData';
 
 const middlewares = [ thunk ];
 const mockStore = configureStore(middlewares);

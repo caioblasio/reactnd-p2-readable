@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import uuidv1 from 'uuid/v1';

@@ -78,9 +78,9 @@ const mapStateToProps = ({ posts, sort, search }, { category, excludeId, include
 
   if(search){
     sortedPosts = sortedPosts.filter(post => 
-      post.title.toLowerCase().includes(search) ||
-      post.author.toLowerCase().includes(search) || 
-      post.category.toLowerCase().includes(search)
+      post.title.toLowerCase().includes(search.toLowerCase()) ||
+      post.author.toLowerCase().includes(search.toLowerCase()) || 
+      post.category.toLowerCase().includes(search.toLowerCase())
     )
   }
 

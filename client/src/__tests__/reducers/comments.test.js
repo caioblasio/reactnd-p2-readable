@@ -1,6 +1,6 @@
 import reducer from '../../reducers/comments';
 import * as types from '../../actions/comments';
-import { testComments } from '../../testUtils/mockData/comments';
+import { testComments } from '../../__mocks__/mockData';
 
 describe('Posts Reducer', () => {
 

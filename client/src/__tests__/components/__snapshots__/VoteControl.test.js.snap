@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VoteControl /> renders the component 1`] = `
+<Fragment>
+  <WithStyles(IconButton)
+    aria-label="Like"
+    color="default"
+    onClick={[Function]}
+  >
+    <pure(ThumbUpIcon) />
+  </WithStyles(IconButton)>
+  <WithStyles(Typography)
+    component="p"
+  >
+    6
+  </WithStyles(Typography)>
+  <WithStyles(IconButton)
+    aria-label="Dislike"
+    color="default"
+    onClick={[Function]}
+  >
+    <pure(ThumbDownIcon) />
+  </WithStyles(IconButton)>
+</Fragment>
+`;

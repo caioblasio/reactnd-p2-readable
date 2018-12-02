@@ -2,8 +2,7 @@ import React from 'react';
 import PostDetail from '../../components/PostDetail';
 import configureStore from 'redux-mock-store';
 import toJson from 'enzyme-to-json';
-import { testPosts } from '../../testUtils/mockData/posts';
-import { testComments } from '../../testUtils/mockData/comments';
+import { testPosts, testComments, jsonHeaders } from '../../__mocks__/mockData';
 import { MemoryRouter, Router } from 'react-router-dom';
 import thunk from 'redux-thunk'
 import NotFound from '../../components/NotFound';
@@ -17,7 +16,7 @@ const mockStore = configureStore(middlewares);
 
 describe('<PostDetail />', () => {
 
-  let wrapper, mounted, store;
+  let wrapper, store;
 
 
   beforeAll(() => {
@@ -32,79 +31,98 @@ describe('<PostDetail />', () => {
 
   });
 
-  it('renders the component', () => {
-
-    // const id = testPosts[Object.keys(testPosts)[0]].id;
-
-    // wrapper = shallow(
-    //   <PostDetail
-    //     id={id}
-    //     store={store}
-    //   />
-    // );
-    // const component = wrapper.dive();
-    // expect(toJson(component.dive())).toMatchSnapshot();
+  beforeEach(() => {
+    fetch.resetMocks();
   });
 
-  // it('should render a Not Found', () => {
+  it('renders the component', () => {
 
-  //   wrapper = shallow(
-  //     <PostDetail
-  //       id="0123456789" //id that not exist
-  //       store={store}
-  //     />
-  //   );
-  //   const component = wrapper.dive();
-  //   expect(component.dive().find(NotFound)).toHaveLength(1);
-  // });
+    const testPost = testPosts[Object.keys(testPosts)[0]];
 
-  // it('should render a Correct Post', () => {
+    fetch
+      .mockResponse(JSON.stringify(testPost), { jsonHeaders })
 
-  //   const id = testPosts[Object.keys(testPosts)[0]].id;
+    wrapper = shallow(
+      <PostDetail
+        id={testPost.id}
+        store={store}
+      />
+    );
+    const component = wrapper.dive();
+    expect(toJson(component.dive())).toMatchSnapshot();
+  });
 
-  //   wrapper = shallow(
-  //     <PostDetail
-  //       id={id}
-  //       store={store}
-  //     />
-  //   );
-  //   const component = wrapper.dive();
-  //   expect(component.props().post.id).toBe(id);
+  it('should render a Not Found', () => {
+
+    const error = { error: 'There was an error' }
+
+    fetch
+      .mockResponse(JSON.stringify(error), { jsonHeaders })
+
+    wrapper = shallow(
+      <PostDetail
+        id="0123456789" //id that not exist
+        store={store}
+      />
+    );
+    const component = wrapper.dive();
+    expect(component.dive().find(NotFound)).toHaveLength(1);
+  });
+
+  it('should render a Correct Post', () => {
+
+    const testPost = testPosts[Object.keys(testPosts)[0]];
+
+    fetch
+      .mockResponse(JSON.stringify(testPost), { jsonHeaders })
+
+    wrapper = shallow(
+      <PostDetail
+        id={testPost.id}
+        store={store}
+      />
+    );
+    const component = wrapper.dive();
+    expect(component.props().post.id).toBe(testPost.id);
     
-  // });
+  });
 
-  // test('should delete a post', (done) => {
+  test('should delete a post', (done) => {
 
-  //   let shallow = createShallow({untilSelector: PostDetail})
+    let shallow = createShallow({untilSelector: PostDetail})
 
-  //   const id = testPosts[Object.keys(testPosts)[0]].id;
-  //   window.confirm = jest.fn(() => true);
+    const testPost = testPosts[Object.keys(testPosts)[0]];
+    const id = testPost.id
+    window.confirm = jest.fn(() => true);
 
-  //   fetch
-  //   .once(JSON.stringify(testPosts[Object.keys(testPosts)[0]]))
-  //   .once(JSON.stringify({ id }))
+    fetch
+      .once(JSON.stringify(testPost))
+      .once(JSON.stringify({ id }))
 
    
 
-  //   wrapper = shallow(
-  //     <MemoryRouter initialEntries={[`/post/${id}`]}>
-  //       <PostDetail
-  //         id={id}
-  //         store={store}
-  //         history={[]}
-  //       />
-  //     </MemoryRouter>
-  //   );
+    wrapper = shallow(
+      <MemoryRouter initialEntries={[`/post/${id}`]}>
+        <PostDetail
+          id={id}
+          store={store}
+          history={[]}
+        />
+      </MemoryRouter>
+    );
 
-  //   const component = wrapper.dive();
-  //   component.dive().find(IconButton).last().simulate('click');
+    const component = wrapper.dive();
+    component.dive().find(IconButton).last().simulate('click');
 
-  //   console.log(fetch.mock.calls.length)
-  //   setImmediate(() => {
-  //     console.log(store.getActions());
-  //     done();
-  //   })
-  // });
+    const expectedAction = { type: 'REMOVE_POST', id: '8xf0y6ziyjabvozdd253nd' }
+
+    setImmediate(() => {
+      expect(store.getActions()).toEqual(
+        expect.arrayContaining([expectedAction])
+      );
+      done();
+    })
+  });
 
 
 

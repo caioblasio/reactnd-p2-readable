@@ -19,7 +19,7 @@ class Header extends Component {
   }
 
   render(){
-    const { isOpen, categories, sort, openDrawer, closeDrawer, changeSearch } = this.props;
+    const { isOpen, categories, openDrawer, closeDrawer, changeSearch } = this.props;
     return (
       <Fragment>
         <SearchAppBar
@@ -31,7 +31,6 @@ class Header extends Component {
         <ResponsiveDrawer 
           isOpen={isOpen}
           categories={categories}
-          sort={sort}
           openDrawer={openDrawer}
           closeDrawer={closeDrawer}
         />

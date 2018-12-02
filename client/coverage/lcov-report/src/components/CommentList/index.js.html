@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.43% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/14</span>
+        <span class='fraction'>12/14</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">77.78% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/9</span>
+        <span class='fraction'>7/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">25% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/12</span>
+        <span class='fraction'>10/12</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -110,32 +110,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,11 +121,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -169,7 +169,7 @@ import Comment from './Comment';
 &nbsp;
 import Typography from '@material-ui/core/Typography';
 &nbsp;
-const styles = <span class="fstat-no" title="function not covered" >th</span>eme =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+const styles = theme =&gt; ({
   root: {
     paddingTop: theme.spacing.unit * 2,
   }
@@ -178,21 +178,21 @@ const styles = <span class="fstat-no" title="function not covered" >th</span>eme
 &nbsp;
 class CommentList extends Component {
 &nbsp;
-<span class="fstat-no" title="function not covered" >  co</span>mponentDidMount() {
-    const { fetchComments, postId } = <span class="cstat-no" title="statement not covered" >this.props;</span>
-<span class="cstat-no" title="statement not covered" >    fetchComments(postId);</span>
+  componentDidMount() {
+    const { fetchComments, postId } = this.props;
+    fetchComments(postId);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-    const { classes, comments, removeComment, editComment } = <span class="cstat-no" title="statement not covered" >this.props;</span>
-<span class="cstat-no" title="statement not covered" >    return (</span>
+  render() {
+    const { classes, comments, removeComment, editComment } = this.props;
+    return (
       &lt;div className={classes.root}&gt;
         
         &lt;Typography variant="body2" color="default"&gt;
-          &lt;strong&gt;{ comments.length &gt; 0 ? `${comments.length} comment(s)` : `No comments` }&lt;/strong&gt;
+          &lt;strong&gt;{ comments.length &gt; 0 ? `${comments.length} comment(s)` : <span class="branch-1 cbranch-no" title="branch not covered" >`No comments` </span>}&lt;/strong&gt;
         &lt;/Typography&gt;
-        {comments.map(<span class="fstat-no" title="function not covered" >co</span>mment =&gt; (
-<span class="cstat-no" title="statement not covered" >          &lt;Comment</span>
+        {comments.map(comment =&gt; (
+          &lt;Comment
             key={comment.id}
             comment={comment}
             onRemoveComment={removeComment}
@@ -204,12 +204,12 @@ class CommentList extends Component {
   }
 }
 &nbsp;
-const mapStateToProps =  <span class="fstat-no" title="function not covered" >({</span> comments }) =&gt; (<span class="cstat-no" title="statement not covered" >{ comments })</span>
+const mapStateToProps =  ({ comments }) =&gt; ({ comments })
 &nbsp;
-const mapDispatchToProps = <span class="fstat-no" title="function not covered" >di</span>spatch =&gt; {
-<span class="cstat-no" title="statement not covered" >  return {</span>
-    fetchComments: <span class="fstat-no" title="function not covered" >(p</span>ostId) =&gt; {
-<span class="cstat-no" title="statement not covered" >      dispatch(fetchComments(postId))</span>
+const mapDispatchToProps = dispatch =&gt; {
+  return {
+    fetchComments: (postId) =&gt; {
+      dispatch(fetchComments(postId))
     },
     removeComment: <span class="fstat-no" title="function not covered" >(c</span>ommentId) =&gt; {
 <span class="cstat-no" title="statement not covered" >      dispatch(removeComment(commentId))</span>
@@ -226,7 +226,7 @@ export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(C
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 25 2018 21:45:49 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 02 2018 20:49:21 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

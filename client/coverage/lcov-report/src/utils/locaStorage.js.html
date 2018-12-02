@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">18.75% </span>
+        <span class="strong">81.25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/16</span>
+        <span class='fraction'>13/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>7/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>3/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">21.43% </span>
+        <span class="strong">85.71% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/14</span>
+        <span class='fraction'>12/14</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -74,60 +74,60 @@
 29
 30
 31
-32</td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+32</td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const checkValue = <span class="fstat-no" title="function not covered" >(k</span>ey, id) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (localStorage[key]) {</span>
-    let values = <span class="cstat-no" title="statement not covered" >JSON.parse(localStorage[key])</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const checkValue = (key, id) =&gt; {
+  if (localStorage[key]) {
+    let values = JSON.parse(localStorage[key])
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (values[id]) <span class="cstat-no" title="statement not covered" >return values[id].option</span></span>
+    if (values[id]) return values[id].option
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return null;</span>
+  return null;
 }
 &nbsp;
-export const saveValue = <span class="fstat-no" title="function not covered" >(v</span>alue, id, option) =&gt; {
-  let localValues = <span class="cstat-no" title="statement not covered" >localStorage[value] ? JSON.parse(localStorage[value]) : {}</span>
+export const saveValue = (value, id, option) =&gt; {
+  let localValues = localStorage[value] ? JSON.parse(localStorage[value]) : {}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  localValues[id] = { id, option }</span>
+  localValues[id] = { id, option }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  localStorage.setItem(value, JSON.stringify(localValues));</span>
+  localStorage.setItem(value, JSON.stringify(localValues));
   
 }
 &nbsp;
-export const getValue = <span class="fstat-no" title="function not covered" >(v</span>alue, condition) =&gt; {
-  let localValues = <span class="cstat-no" title="statement not covered" >localStorage[value] ? JSON.parse(localStorage[value]) : {}</span>
+export const getValue = (value, condition) =&gt; {
+  let localValues = localStorage[value] ? <span class="branch-0 cbranch-no" title="branch not covered" >JSON.parse(localStorage[value]) </span>: {}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return Object.keys(localValues).map(<span class="fstat-no" title="function not covered" >id</span> =&gt; <span class="cstat-no" title="statement not covered" >localValues[id])</span></span>
+  return Object.keys(localValues).map(<span class="fstat-no" title="function not covered" >id</span> =&gt; <span class="cstat-no" title="statement not covered" >localValues[id])</span>
     .filter(<span class="fstat-no" title="function not covered" >ob</span>j =&gt; <span class="cstat-no" title="statement not covered" >obj.option === condition)</span>
     .map(<span class="fstat-no" title="function not covered" >ob</span>j =&gt; <span class="cstat-no" title="statement not covered" >obj.id)</span>;
 }
@@ -142,7 +142,7 @@ export const getValue = <span class="fstat-no" title="function not covered" >(v<
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 25 2018 21:45:49 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 02 2018 20:49:21 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../prettify.js"></script>

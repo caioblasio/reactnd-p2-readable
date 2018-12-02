@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">9.09% </span>
+        <span class="strong">90.91% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>1/11</span>
+        <span class='fraction'>10/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>6/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">83.33% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>5/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">12.5% </span>
+        <span class="strong">87.5% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>1/8</span>
+        <span class='fraction'>7/8</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -154,7 +154,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -184,20 +184,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -221,13 +216,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,7 +253,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import SortIcon from '@material-ui/icons/Sort';
 &nbsp;
 &nbsp;
-const styles = <span class="fstat-no" title="function not covered" >th</span>eme =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+const styles = theme =&gt; ({
   root: {
     display: 'flex',
     paddingBottom: theme.spacing.unit,
@@ -282,19 +282,19 @@ class Headline extends Component {
 <span class="cstat-no" title="statement not covered" >    this.setState({ anchorEl: event.currentTarget });</span>
   };
 &nbsp;
-  handleClose = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >    this.setState({ anchorEl: null });</span>
+  handleClose = () =&gt; {
+    this.setState({ anchorEl: null });
   };
 &nbsp;
 &nbsp;
-<span class="fstat-no" title="function not covered" >  re</span>nder() {
-    const { anchorEl } = <span class="cstat-no" title="statement not covered" >this.state,</span>
-     { title, onSort, sortOption, side, classes } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+  render() {
+    const { anchorEl } = this.state,
+     { title, onSort, sortOption, side, classes } = this.props;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;Fragment&gt;
           &lt;div className={classes.root}&gt;
-            &lt;div className={`${classes.title} ${side ? classes.center : ''}`}&gt;
+            &lt;div className={`${classes.title} ${side ? <span class="branch-0 cbranch-no" title="branch not covered" >classes.center </span>: ''}`}&gt;
               &lt;Typography variant="h5" className={classes.header}&gt;
                 {title}
               &lt;/Typography&gt;
@@ -305,7 +305,7 @@ class Headline extends Component {
                   variant="contained" 
                   size="small" 
                   className={classes.button}
-                  aria-owns={anchorEl ? 'simple-menu' : undefined}
+                  aria-owns={anchorEl ? <span class="branch-0 cbranch-no" title="branch not covered" >'simple-menu' </span>: undefined}
                   aria-haspopup="true"
                   onClick={this.handleClick}
                 &gt;
@@ -320,13 +320,13 @@ class Headline extends Component {
                 &gt;
                   &lt;MenuItem
                     selected={sortOption === 'score'}
-                    onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >onSort('score'); <span class="cstat-no" title="statement not covered" ></span>this.handleClose()}</span>}
+                    onClick={() =&gt; {onSort('score'); this.handleClose()}}
                   &gt;
                     Vote Score
                   &lt;/MenuItem&gt;
                   &lt;MenuItem 
                     selected={sortOption === 'date'}
-                    onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; {<span class="cstat-no" title="statement not covered" >onSort('date'); <span class="cstat-no" title="statement not covered" ></span>this.handleClose();}</span>}
+                    onClick={() =&gt; {onSort('date'); this.handleClose();}}
                   &gt;
                     Date
                   &lt;/MenuItem&gt;
@@ -346,7 +346,7 @@ export default withStyles(styles)(Headline)</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Nov 25 2018 21:45:49 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 02 2018 20:49:21 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

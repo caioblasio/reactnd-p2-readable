@@ -1,7 +1,7 @@
 import configureStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import * as CategoriesActions from '../../actions/categories'; 
-import { testCategories } from '../../testUtils/mockData/categories';
+import { testCategories } from '../../__mocks__/mockData';
 
 const middlewares = [ thunk ];
 const mockStore = configureStore(middlewares);

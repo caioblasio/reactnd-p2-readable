@@ -1,5 +1,5 @@
 import sort from '../../utils/sort';
-import { testPosts } from '../../testUtils/mockData/posts'; 
+import { testPosts } from '../../__mocks__/mockData'; 
 
 describe('Date Utils', () => {
 

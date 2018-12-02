@@ -30,6 +30,7 @@ export function fetchPostById(id) {
     return ContentAPI.getPostById(id)
       .then(post => dispatch(_receivePosts(post)))
       .then(() => dispatch(hideLoading()))
+      .catch(() => console.log('deu ruim'))
   }
 }
 

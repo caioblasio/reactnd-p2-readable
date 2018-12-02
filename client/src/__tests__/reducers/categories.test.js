@@ -1,6 +1,6 @@
 import reducer from '../../reducers/categories';
 import * as types from '../../actions/categories';
-import { testCategories } from '../../testUtils/mockData/categories';
+import { testCategories } from '../../__mocks__/mockData';
 
 describe('Categories Reducer', () => {
 

@@ -1,0 +1,354 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> renders correcty 1`] = `
+<Fragment>
+  <WithStyles(SearchAppBar)
+    changeSearch={[Function]}
+    closeDrawer={[Function]}
+    isOpen={false}
+    openDrawer={[Function]}
+  />
+  <WithStyles(ResponsiveDrawer)
+    categories={
+      Array [
+        Object {
+          "name": "Category One",
+          "path": "categoryone",
+        },
+        Object {
+          "name": "Category Two",
+          "path": "categorytwo",
+        },
+      ]
+    }
+    closeDrawer={[Function]}
+    isOpen={false}
+    openDrawer={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`<ResponsiveDrawer /> renders correcty 1`] = `
+<Fragment>
+  <Hidden
+    implementation="js"
+    lgDown={false}
+    lgUp={false}
+    mdDown={false}
+    mdUp={true}
+    smDown={false}
+    smUp={false}
+    xlDown={false}
+    xlUp={false}
+    xsDown={false}
+    xsUp={false}
+  >
+    <WithStyles(Drawer)
+      ModalProps={
+        Object {
+          "keepMounted": true,
+        }
+      }
+      anchor="left"
+      classes={
+        Object {
+          "paper": "ResponsiveDrawer-drawerPaper-2",
+        }
+      }
+      onClose={[MockFunction]}
+      open={true}
+      variant="temporary"
+    >
+      <div
+        className="ResponsiveDrawer-toolbar-5"
+      />
+      <WithStyles(Divider) />
+      <WithStyles(List)
+        component="nav"
+        subheader={
+          <WithStyles(ListSubheader)
+            component="div"
+          >
+            Categories
+          </WithStyles(ListSubheader)>
+        }
+      >
+        <Link
+          className="ResponsiveDrawer-link-4"
+          replace={false}
+          to="/"
+        >
+          <WithStyles(ListItem)
+            button={true}
+          >
+            <WithStyles(ListItemText)
+              primary="All"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+        <Link
+          className="ResponsiveDrawer-link-4"
+          key="categoryone"
+          replace={false}
+          to="/categoryone"
+        >
+          <WithStyles(ListItem)
+            button={true}
+            key="categoryone"
+          >
+            <WithStyles(ListItemText)
+              primary="Category One"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+        <Link
+          className="ResponsiveDrawer-link-4"
+          key="categorytwo"
+          replace={false}
+          to="/categorytwo"
+        >
+          <WithStyles(ListItem)
+            button={true}
+            key="categorytwo"
+          >
+            <WithStyles(ListItemText)
+              primary="Category Two"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+      </WithStyles(List)>
+      <WithStyles(Divider) />
+      <WithStyles(List)
+        component="nav"
+        subheader={
+          <WithStyles(ListSubheader)
+            component="div"
+          >
+            Posts
+          </WithStyles(ListSubheader)>
+        }
+      >
+        <Link
+          className="ResponsiveDrawer-link-4"
+          replace={false}
+          to="/new"
+        >
+          <WithStyles(ListItem)
+            button={true}
+          >
+            <WithStyles(ListItemIcon)>
+              <pure(NoteAddIcon) />
+            </WithStyles(ListItemIcon)>
+            <WithStyles(ListItemText)
+              primary="Create Post"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+        <Link
+          className="ResponsiveDrawer-link-4"
+          replace={false}
+          to="/favorites"
+        >
+          <WithStyles(ListItem)
+            button={true}
+          >
+            <WithStyles(ListItemIcon)>
+              <pure(StarIcon) />
+            </WithStyles(ListItemIcon)>
+            <WithStyles(ListItemText)
+              primary="Favorites"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+      </WithStyles(List)>
+    </WithStyles(Drawer)>
+  </Hidden>
+  <Hidden
+    implementation="css"
+    lgDown={false}
+    lgUp={false}
+    mdDown={false}
+    mdUp={false}
+    smDown={true}
+    smUp={false}
+    xlDown={false}
+    xlUp={false}
+    xsDown={false}
+    xsUp={false}
+  >
+    <WithStyles(Drawer)
+      classes={
+        Object {
+          "paper": "ResponsiveDrawer-drawerPaper-2",
+        }
+      }
+      open={true}
+      variant="persistent"
+    >
+      <div
+        className="ResponsiveDrawer-toolbar-5"
+      />
+      <WithStyles(Divider) />
+      <WithStyles(List)
+        component="nav"
+        subheader={
+          <WithStyles(ListSubheader)
+            component="div"
+          >
+            Categories
+          </WithStyles(ListSubheader)>
+        }
+      >
+        <Link
+          className="ResponsiveDrawer-link-4"
+          replace={false}
+          to="/"
+        >
+          <WithStyles(ListItem)
+            button={true}
+          >
+            <WithStyles(ListItemText)
+              primary="All"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+        <Link
+          className="ResponsiveDrawer-link-4"
+          key="categoryone"
+          replace={false}
+          to="/categoryone"
+        >
+          <WithStyles(ListItem)
+            button={true}
+            key="categoryone"
+          >
+            <WithStyles(ListItemText)
+              primary="Category One"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+        <Link
+          className="ResponsiveDrawer-link-4"
+          key="categorytwo"
+          replace={false}
+          to="/categorytwo"
+        >
+          <WithStyles(ListItem)
+            button={true}
+            key="categorytwo"
+          >
+            <WithStyles(ListItemText)
+              primary="Category Two"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+      </WithStyles(List)>
+      <WithStyles(Divider) />
+      <WithStyles(List)
+        component="nav"
+        subheader={
+          <WithStyles(ListSubheader)
+            component="div"
+          >
+            Posts
+          </WithStyles(ListSubheader)>
+        }
+      >
+        <Link
+          className="ResponsiveDrawer-link-4"
+          replace={false}
+          to="/new"
+        >
+          <WithStyles(ListItem)
+            button={true}
+          >
+            <WithStyles(ListItemIcon)>
+              <pure(NoteAddIcon) />
+            </WithStyles(ListItemIcon)>
+            <WithStyles(ListItemText)
+              primary="Create Post"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+        <Link
+          className="ResponsiveDrawer-link-4"
+          replace={false}
+          to="/favorites"
+        >
+          <WithStyles(ListItem)
+            button={true}
+          >
+            <WithStyles(ListItemIcon)>
+              <pure(StarIcon) />
+            </WithStyles(ListItemIcon)>
+            <WithStyles(ListItemText)
+              primary="Favorites"
+            />
+          </WithStyles(ListItem)>
+        </Link>
+      </WithStyles(List)>
+    </WithStyles(Drawer)>
+  </Hidden>
+</Fragment>
+`;
+
+exports[`<SearchAppBar /> renders correcty 1`] = `
+<Fragment>
+  <WithStyles(AppBar)
+    className="SearchAppBar-appBar-6"
+    position="fixed"
+  >
+    <WithStyles(Toolbar)>
+      <WithStyles(IconButton)
+        aria-label="Open drawer"
+        className="SearchAppBar-menuButton-8"
+        color="inherit"
+        onClick={[MockFunction]}
+      >
+        <pure(MenuIcon) />
+      </WithStyles(IconButton)>
+      <Link
+        className="SearchAppBar-link-10"
+        replace={false}
+        to="/"
+      >
+        <WithStyles(Typography)
+          className="SearchAppBar-title-9"
+          color="inherit"
+          noWrap={true}
+          variant="h6"
+        >
+          Readable
+        </WithStyles(Typography)>
+      </Link>
+      <div
+        className="SearchAppBar-grow-7"
+      />
+      <div
+        className="SearchAppBar-search-11"
+      >
+        <div
+          className="SearchAppBar-searchIcon-12"
+        >
+          <pure(SearchIcon) />
+        </div>
+        <WithStyles(InputBase)
+          classes={
+            Object {
+              "input": "SearchAppBar-inputInput-14",
+              "root": "SearchAppBar-inputRoot-13",
+            }
+          }
+          fullWidth={false}
+          inputComponent="input"
+          multiline={false}
+          onChange={[Function]}
+          placeholder="Search for posts…"
+          type="text"
+          value=""
+        />
+      </div>
+    </WithStyles(Toolbar)>
+  </WithStyles(AppBar)>
+</Fragment>
+`;

@@ -1,5 +1,4 @@
 import * as ContentAPI from '../utils/contentAPI';
-import { showLoading, hideLoading } from '../actions/loading';
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const EDIT_COMMENT = 'EDIT_COMMENT';

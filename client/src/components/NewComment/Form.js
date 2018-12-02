@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import uuidv1 from 'uuid/v1';
 import Button from '@material-ui/core/Button';
@@ -13,7 +13,7 @@ const styles = theme => ({
   },
 });
 
-class NewComment extends Component {
+class Form extends Component {
 
   state = {
     body: '',
@@ -87,4 +87,4 @@ class NewComment extends Component {
   }
 }
 
-export default withStyles(styles)(NewComment);
+export default withStyles(styles)(Form);
