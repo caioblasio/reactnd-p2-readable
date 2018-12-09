@@ -24,6 +24,28 @@ const defaultData = {
     voteScore: -5,
     deleted: false,
     commentCount: 0
+  },
+  "3f4820b9-6378-4a1c-85a0-a65f9083f472": {
+    id: '3f4820b9-6378-4a1c-85a0-a65f9083f472',
+    timestamp: 1500000000000,
+    title: 'Tricks with JavaScript Destructuring',
+    body: 'In order to understand the newer destructuring syntax introduced in ES6, let’s cover the “old” way. I’ll mention this a couple times throughout, but these are optional syntaxes that MAY help. There are still some use cases that are cleaner with the original methods, such as property accessors, and that is perfectly valid.',
+    author: 'thingone',
+    category: 'react',
+    voteScore: 1,
+    deleted: false,
+    commentCount: 0
+  },
+  "2dbe87c1-a116-480e-8d25-90c3b54256b0": {
+    id: '2dbe87c1-a116-480e-8d25-90c3b54256b0',
+    timestamp: 1520000000000,
+    title: 'About Udacity Courses Format',
+    body: 'Each course consists of several units comprising video lectures with closed captioning, in conjunction with integrated quizzes to help students understand concepts and reinforce ideas, as well as follow-up homework, which promotes a "learn by doing" model. Programming classes use the Python language; programming assignments are graded by automated grading programs on the Udacity servers.',
+    author: 'thingone',
+    category: 'udacity',
+    voteScore: 1,
+    deleted: false,
+    commentCount: 0
   }
 }
 

@@ -1,22 +1,31 @@
-# Readable API Server
+# Readable Project
 
-This is the starter project for the final assessment project for Udacity's Redux course where you will build a content and comment web app. Users will be able to post content to predefined categories, comment on their posts and other users' posts, and vote on posts and comments. Users will also be able to edit and delete posts and comments.
+![Readable home page](https://raw.githubusercontent.com/caioblasio/nanodegree-react-p1-myreads/master/readable.png)
+A Content App created as part of the Udacity React Developer Nanodegree. Written in React and styled with Material-UI. There is a simple server built in Node.js used to serve the react app all the APIs needed. The App is like a blog, where there are posts from pre-defined categories. One can add new posts, comment on posts, thumb a post up or down, view details of a single post and edit or delete posts. Redux is used for state management.
+ [Click here to view the live demo](https://readable-caioblasio.herokuapp.com)
 
-This repository includes the code for the backend API Server that you'll use to develop and interact with the front-end portion of the project.
+## Instructions
 
-## Start Developing
+You can clone or download this repository. To run dev environment:
 
-To get started developing right away:
+* install all project dependencies
 
-* Install and start the API server
-    - `cd api-server`
-    - `npm install`
-    - `node server`
-* In another terminal window, use Create React App to scaffold out the front-end
-    - `create-react-app frontend`
-    - `cd frontend`
-    - `npm start`
+```
+npm install
+```
+* install all client project dependencies
 
-## API Server
+```
+cd client
+npm install
+npm install --only=dev
+```
+* start the development server
 
-Information about the API server and how to use it can be found in its [README file](api-server/README.md).
+```
+npm run dev
+```
+
+## Testing
+
+The app has a test suite written with Jest & Enzyme that can be run with `npm run test`. A coverage report will be generated.

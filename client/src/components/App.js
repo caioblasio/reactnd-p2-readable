@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
-import green from '@material-ui/core/colors/green';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
@@ -19,8 +18,7 @@ import classNames from 'classnames';
 const theme = createMuiTheme({
   palette: {
     primary: blue,
-    secondary: green,
-    tertiary: red,
+    secondary: red,
   },
   typography: {
     useNextVariants: true,
