@@ -99,7 +99,7 @@ class VoteControl extends Component {
         <IconButton 
           aria-label="Like"
           onClick={() => this.handleVote('upVote')}
-          color={currentVote === 'upVote'? 'secondary' : 'default'}
+          color={currentVote === 'upVote'? 'primary' : 'default'}
         >
           <ThumbUp />
         </IconButton>
