@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import PostList from './PostList'
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -15,8 +16,22 @@ const styles = theme => ({
   }
 });
 
+/**
+ * @description Category component that render a post list from an specific category
+ * @param {string} category
+ * @param {object} classes
+*/
 class Category extends Component {
 
+  static propType = {
+    category: PropTypes.string.isRequired,
+    classes: PropTypes.object.isRequired
+  };
+
+  /**
+   * @description Gets category name from list of avaiable categories
+   * @param {string} nextCategory
+  */
   getCategory = nextCategory =>
     this.props.categories.find(category => category.path === nextCategory)
 

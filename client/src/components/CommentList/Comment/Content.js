@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from 'react';
-
-
-import VoteControl from '../../VoteControl';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
+import VoteControl from '../../VoteControl';
 
 const styles = theme => ({
   contentItem: {
@@ -24,8 +23,25 @@ const styles = theme => ({
   },
 });
 
+/**
+ * @description Single Comment
+ * @param {obejct} comment
+ * @param {function()} toggleEdit
+ * @param {function()} onRemoveComment
+ * @param {object} classes
+*/
 class Content extends Component {
 
+  static propType = {
+    comment: PropTypes.object.isRequired,
+    onRemoveComment: PropTypes.func.isRequired,
+    toggleEdit: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+  };
+
+  /**
+   * @description Handles deletion of a coment
+  */
   handleDelete = () => {
     const { onRemoveComment, comment: { id, author } } = this.props;
     const alertConfirmation = window.confirm(

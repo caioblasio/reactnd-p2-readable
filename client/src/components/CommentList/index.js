@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchComments, editComment, removeComment } from '../../actions/comments';
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { fetchComments, editComment, removeComment } from '../../actions/comments';
 import Comment from './Comment';
-
 import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
@@ -13,8 +13,27 @@ const styles = theme => ({
 });
 
 
+/**
+ * @description List of comments for a specific post
+ * @param {string} postId
+ * @param {function()} fetchComments
+ * @param {function()} removeComment
+ * @param {function()} editComment
+ * @param {object} classes
+*/
 class CommentList extends Component {
 
+  static propType = {
+    postId: PropTypes.string.isRequired,
+    fetchComments: PropTypes.func.isRequired,
+    removeComment: PropTypes.func.isRequired,
+    editComment: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+  };
+
+  /**
+   * @description Fetches list of comments for the post
+  */
   componentDidMount() {
     const { fetchComments, postId } = this.props;
     fetchComments(postId);

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> renders correcty 1`] = `
+exports[`<Header /> renders correctly 1`] = `
 <Fragment>
   <WithStyles(SearchAppBar)
     changeSearch={[Function]}

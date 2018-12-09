@@ -78,8 +78,23 @@ const styles = theme => ({
 });
 
 
-
+/**
+ * @description Top bar
+ * @param {bool} isOpen
+ * @param {function()} openDrawer
+ * @param {function()} closeDrawer
+ * @param {function()} changeSearch
+ * @param {object} classes
+*/
 class SearchAppBar extends Component {
+
+  static propType = {
+    isOpen: PropTypes.bool.isRequired,
+    openDrawer: PropTypes.func.isRequired,
+    closeDrawer: PropTypes.func.isRequired,
+    changeSearch: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
+  };
 
   state = {
     query: '',

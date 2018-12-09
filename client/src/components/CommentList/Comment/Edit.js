@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -17,20 +17,43 @@ const styles = theme => ({
   },
 });
 
+/**
+ * @description Single Comment
+ * @param {obejct} comment
+ * @param {function()} toggleEdit
+ * @param {function()} onEditComment
+ * @param {object} classes
+*/
 class Edit extends Component {
+
+  static propType = {
+    comment: PropTypes.object.isRequired,
+    toggleEdit: PropTypes.func.isRequired,
+    onEditComment: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+  };
 
   state = {
     body: this.props.comment.body
   }
 
+  /**
+   * @description Handles change of text fields
+   * @param {string} name
+   * @param {object} event
+  */
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  /**
+   * @description Handles submit of the form with new comment data
+   * @param {object} event
+  */
+  handleSubmit = (event) => {
+    event.preventDefault();
 
     const { body } = this.state,
       { comment, toggleEdit, onEditComment } = this.props;

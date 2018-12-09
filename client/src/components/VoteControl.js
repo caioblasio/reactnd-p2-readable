@@ -1,17 +1,31 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-
 import { addVoteToPost } from '../actions/posts';
 import { addVoteToComment } from '../actions/comments';
-
+import { checkValue, saveValue } from '../utils/locaStorage';
+import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 
-import { checkValue, saveValue } from '../utils/locaStorage';
-
+/**
+ * @description Vote Control component for a post or comment. Uses local storage to manage the votes
+ * @param {string} id
+ * @param {string} type
+ * @param {number} voteScore
+ * @param {function()} addVoteToPost
+ * @param {function()} addVoteToComment
+*/
 class VoteControl extends Component {
+
+  static propType = {
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    voteScore: PropTypes.number.isRequired,
+    addVoteToPost: PropTypes.func.isRequired,
+    addVoteToComment: PropTypes.func.isRequired
+  };
 
   state = {
     currentVote: checkValue('votes', this.props.id)
@@ -19,9 +33,12 @@ class VoteControl extends Component {
 
   score = this.props.voteScore;
 
+  /**
+   * @description Calls cancel and/or apply vote according to current vote and the newVote provided
+   * @param {string} newVote
+  */
   handleVote = newVote => {
-    const { currentVote } = this.state
-
+    const { currentVote } = this.state;
     if (currentVote && currentVote === newVote) {
       this.cancel(newVote)
     } else if (currentVote) {
@@ -32,6 +49,10 @@ class VoteControl extends Component {
     }
   }
 
+  /**
+   * @description Cancel a vote correctly according to the current vote
+   * @param {string} vote
+  */
   cancel = vote => {
     if (vote === 'upVote') {
       this.handleDispatchVote('downVote')
@@ -43,6 +64,10 @@ class VoteControl extends Component {
     saveValue('votes', this.props.id, null)
   }
 
+  /**
+   * @description Apply a vote
+   * @param {string} vote
+  */
   apply = vote => {
     saveValue('votes', this.props.id, vote)
     this.handleDispatchVote(vote)
@@ -50,8 +75,11 @@ class VoteControl extends Component {
   }
 
 
+  /**
+   * @description Dispatch vote action to a post or component as appropriate
+   * @param {string} vote
+  */
   handleDispatchVote = vote => {
-    
     const { id, addVoteToPost, addVoteToComment, type } = this.props;
     vote === 'upVote' ? this.score++ : this.score--;
     const changes = { voteScore: this.score }

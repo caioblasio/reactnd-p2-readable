@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import uuidv1 from 'uuid/v1';
@@ -23,12 +23,29 @@ const styles = theme => ({
 
 });
 
+/**
+ * @description Component for adding a component in a post detail page
+ * @param {function()} onSubmit
+ * @param {object[]} categories
+ * @param {object} post
+ * @param {object} classes
+*/
 class Form extends Component {
+
+  static propType = {
+    onSubmit: PropTypes.func.isRequired,
+    categories: PropTypes.array.isRequired,
+    post: PropTypes.object,
+    classes: PropTypes.object.isRequired
+  };
 
   state = this.getInitialState(this.props.post);
 
+  /**
+   * @description Get initial state of the form component according to props that were passed
+   * @param {object} post
+  */
   getInitialState(post) {
-
     const state = post 
     ? {
       title: post.title,
@@ -41,22 +58,33 @@ class Form extends Component {
       author: '',
       category: '',
     }
-
     return state
   }
 
+  /**
+   * @description Handles new receiving of props and updates the form as necessary
+  */
   componentWillReceiveProps = ({ post }) => {
     this.setState(this.getInitialState(post))
   }
 
+  /**
+   * @description Handles change of text fields
+   * @param {string} name
+   * @param {object} event
+  */
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  /**
+   * @description Creates a new post object or use existing and handles form submit
+   * @param {object} event
+  */
+  handleSubmit = (event) => {
+    event.preventDefault();
     
     const { onSubmit, post } = this.props,
       { title, body, author, category } = this.state

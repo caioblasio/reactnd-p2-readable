@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import PostList from './PostList';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
@@ -13,6 +14,10 @@ const styles = theme => ({
   }
 });
 
+/**
+ * @description Home component that renders post list from all categories
+ * @param {object} classes
+*/
 const Home = props => {
 
   const { classes } = props;
@@ -29,5 +34,9 @@ const Home = props => {
   )
   
 }
+
+Home.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Home)

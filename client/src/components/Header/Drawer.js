@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -38,7 +38,26 @@ const styles = theme => ({
   toolbar: theme.mixins.toolbar,
 });
 
-class ResponsiveDrawer extends React.Component {
+
+/**
+ * @description Top bar
+ * @param {bool} isOpen
+ * @param {function()} openDrawer
+ * @param {function()} closeDrawer
+ * @param {array} categories
+ * @param {object} classes
+ * @param {object} theme
+*/
+class ResponsiveDrawer extends Component {
+
+  static propType = {
+    isOpen: PropTypes.bool.isRequired,
+    openDrawer: PropTypes.func.isRequired,
+    closeDrawer: PropTypes.func.isRequired,
+    categories: PropTypes.array.isRequired,
+    classes: PropTypes.object.isRequired,
+    theme: PropTypes.object.isRequired
+  };
 
   render() {
     const { isOpen, categories, closeDrawer, classes, theme } = this.props;

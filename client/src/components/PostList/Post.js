@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-
 import { Link } from 'react-router-dom';
 import { getFormatedDate } from '../../utils/date';
 import { withStyles } from '@material-ui/core/styles';
+import VoteControl from '../VoteControl';
+import FavoriteControl from '../FavoriteControl';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,11 +16,6 @@ import Divider from '@material-ui/core/Divider';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
-
-
-import VoteControl from '../VoteControl';
-import FavoriteControl from '../FavoriteControl';
 
 const styles = theme => ({
   card: {
@@ -46,23 +43,43 @@ const styles = theme => ({
   }
 });
 
-
-
+/**
+ * @description Single post card component
+ * @param {object} post
+ * @param {function()} onDelete
+ * @param {object} classes
+*/
 class Post extends Component {
+
+  static propType = {
+    post: PropTypes.object.isRequired,
+    onDelete: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
+  };
 
   state = {
     anchorEl: null,
   };
 
+  /**
+   * @description Handles click on post menu
+   * @param {object} event
+  */
   handleMenuClick = event => {
     event.preventDefault();
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  /**
+   * @description Handles close on post menu
+  */
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
   };
 
+  /**
+   * @description Handles deletion of a post
+  */
   handleRemovePost = () =>{
      const { onDelete, post } = this.props;
      const alertConfirmation = window.confirm(

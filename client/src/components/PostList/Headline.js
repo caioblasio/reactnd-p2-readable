@@ -1,14 +1,12 @@
 import React, { Component, Fragment } from 'react'
 import { withStyles } from '@material-ui/core/styles';
-
+import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
 import Divider from '@material-ui/core/Divider';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import SortIcon from '@material-ui/icons/Sort';
-
 
 const styles = theme => ({
   root: {
@@ -29,16 +27,39 @@ const styles = theme => ({
   }
 });
 
+/**
+ * @description Headline component for a post list
+ * @param {string} title
+ * @param {bool} side
+ * @param {function()} onSort
+ * @param {string} sortOption
+ * @param {object} classes
+*/
 class Headline extends Component {
+
+  static propType = {
+    title: PropTypes.string,
+    side: PropTypes.bool,
+    onSort: PropTypes.func.isRequired,
+    sortOption: PropTypes.string.isRequired,
+    classes: PropTypes.object.isRequired
+  };
 
   state = {
     anchorEl: null,
   };
 
+  /**
+   * @description Handles click on sort select
+   * @param {object} 
+  */
   handleClick = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  /**
+   * @description Handles close on sort select
+  */
   handleClose = () => {
     this.setState({ anchorEl: null });
   };

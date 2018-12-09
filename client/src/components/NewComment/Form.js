@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import uuidv1 from 'uuid/v1';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
@@ -13,21 +14,40 @@ const styles = theme => ({
   },
 });
 
+/**
+ * @description Component for adding a component in a post detail page
+ * @param {function()} onSubmit
+ * @param {object} classes
+*/
 class Form extends Component {
+
+  static propType = {
+    onSubmit: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
+  };
 
   state = {
     body: '',
     author: ''
   }
 
+  /**
+   * @description Handles change of text fields
+   * @param {string} name
+   * @param {object} event
+  */
   handleChange = name => event => {
     this.setState({
       [name]: event.target.value,
     });
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  /**
+   * @description Creates a new comment object from form data and handles form submit
+   * @param {object} event
+  */
+  handleSubmit = (event) => {
+    event.preventDefault();
 
     const { body, author } = this.state,
       { onSubmit } = this.props;

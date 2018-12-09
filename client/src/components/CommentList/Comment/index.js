@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import { getFormatedDate } from '../../../utils/date';
-
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
 import Content from './Content';
 import Edit from './Edit';
 
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -20,13 +20,30 @@ const styles = theme => ({
   },
 });
 
-
+/**
+ * @description Single Comment
+ * @param {obejct} comment
+ * @param {function()} onRemoveComment
+ * @param {function()} onEditComment
+ * @param {object} classes
+*/
 class Comment extends Component {
+
+  static propType = {
+    comment: PropTypes.object.isRequired,
+    onRemoveComment: PropTypes.func.isRequired,
+    onEditComment: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+  };
 
   state = {
     edit: false
   }
 
+  /**
+   * @description handle click on edit icon and changes component to edit mode
+   * @param {bool} edit
+  */
   handeToggleEdit = (edit) => {
     this.setState({
       edit

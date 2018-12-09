@@ -6,6 +6,7 @@ import Headline from './Headline';
 import sortList from '../../utils/sort';
 import { changeSort } from '../../actions/sort';
 import { fetchPosts, fetchPostsByCategory, removePost } from '../../actions/posts';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   list: {
@@ -19,8 +20,39 @@ const styles = theme => ({
   }
 });
 
+/**
+ * @description PostList component
+ * @param {object[]} posts
+ * @param {string} sort
+ * @param {string} search
+ * @param {string} category
+ * @param {string} excludeId
+ * @param {number} maxQty
+ * @param {function()} fetchPosts
+ * @param {function()} fetchPostsByCategory
+ * @param {function()} deletePost
+ * @param {function()} handleSort
+ * @param {object} classes
+*/
 class PostList extends Component {
 
+  static propType = {
+    posts: PropTypes.object,
+    sort: PropTypes.string,
+    search: PropTypes.string,
+    category: PropTypes.string,
+    excludeId: PropTypes.string,
+    maxQty: PropTypes.number,
+    fetchPosts: PropTypes.func.isRequired,
+    fetchPostsByCategory: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
+    handleSort: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
+  };
+
+  /**
+   * @description Fetches all posts or posts by a category as appropriate
+  */
   componentDidMount(){
     const { category, fetchPosts, fetchPostsByCategory } = this.props;
 
@@ -31,6 +63,10 @@ class PostList extends Component {
     }
   }
 
+  /**
+   * @description Fetches posts when component is updated
+   * @param {object} prevProps
+  */
   componentDidUpdate(prevProps){
     const { category, fetchPostsByCategory } = this.props
     const prevCategory = prevProps.category

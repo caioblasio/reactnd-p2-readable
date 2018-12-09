@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import PostList from './PostList';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-
 import { getValue } from '../utils/locaStorage';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   button: {
@@ -15,6 +15,10 @@ const styles = theme => ({
   }
 });
 
+/**
+ * @description Favorite component that renders post list marked as favorites
+ * @param {object} classes
+*/
 const Favorites = props => {
 
   const { classes } = props;
@@ -31,5 +35,9 @@ const Favorites = props => {
   )
   
 }
+
+Favorites.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 export default withStyles(styles)(Favorites)

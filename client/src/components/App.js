@@ -1,20 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
-
-import { fetchCategories } from '../actions/categories';
-import Header from './Header';
-
 import blue from '@material-ui/core/colors/blue';
 import red from '@material-ui/core/colors/red';
 import green from '@material-ui/core/colors/green';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { MuiThemeProvider, createMuiTheme, withStyles } from '@material-ui/core/styles';
-
 import Home from './Home';
+import Header from './Header';
 import Category from './Category';
-
 import ManagePost from './ManagePost';
 import PostDetail from './PostDetail';
 import Favorites from './Favorites';
@@ -79,10 +74,6 @@ const styles = {
 };
 
 class App extends Component {
-  
-  componentDidMount(){
-    this.props.dispatch(fetchCategories())
-  }
 
   render() {
     const { classes, isOpen, isLoading } = this.props;
@@ -94,7 +85,7 @@ class App extends Component {
               <CssBaseline />
               <Header/>
               {isLoading &&
-                <LinearProgress color="default" className={classes.loading}/>
+                <LinearProgress color="primary" className={classes.loading}/>
               }
               <div className={classNames(classes.content, {
                   [classes.contentShift]: isOpen,
@@ -134,11 +125,6 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ drawer, loading }) {
-  return {
-    isOpen: drawer,
-    isLoading: loading
-  }
-}
+const mapStateToProps = ({ drawer, loading }) => ({ isOpen: drawer, isLoading: loading })
 
 export default withStyles(styles)(connect(mapStateToProps)(App));

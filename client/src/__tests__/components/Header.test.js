@@ -30,9 +30,12 @@ describe('<Header />', () => {
     fetch.resetMocks();
   });
 
-  it('renders correcty', () => {
+  it('renders correctly', () => {
 
-    let shallow = createShallow({untilSelector: Route})
+    let shallow = createShallow({untilSelector: Route});
+
+    fetch
+      .mockResponse(JSON.stringify(testCategories), { jsonHeaders })
 
     wrapper = shallow(
       <MemoryRouter>
