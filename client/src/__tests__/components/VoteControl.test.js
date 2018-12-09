@@ -131,7 +131,7 @@ describe('<VoteControl />', () => {
     const component = wrapper.dive();
     component.find(IconButton).first().simulate('click');
     expect(component.state().currentVote).toEqual('upVote')
-    expect(fetch.mock.calls[0][0]).toEqual(`http://localhost:3001/comments/${testComment.id}`);
+    expect(fetch.mock.calls[0][0]).toEqual(`/api/comments/${testComment.id}`);
     expect(fetch.mock.calls).toHaveLength(1)
 
   });

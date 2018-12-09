@@ -1,5 +1,5 @@
 
-const api = "http://localhost:3001"
+const api = "/api"
 
 let token = localStorage.token
 

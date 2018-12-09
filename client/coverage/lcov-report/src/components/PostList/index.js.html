@@ -157,7 +157,44 @@
 112
 113
 114
-115</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -181,12 +218,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -279,6 +351,7 @@ import Headline from './Headline';
 import sortList from '../../utils/sort';
 import { changeSort } from '../../actions/sort';
 import { fetchPosts, fetchPostsByCategory, removePost } from '../../actions/posts';
+import PropTypes from 'prop-types';
 &nbsp;
 const styles = theme =&gt; ({
   list: {
@@ -292,8 +365,39 @@ const styles = theme =&gt; ({
   }
 });
 &nbsp;
+/**
+ * @description PostList component
+ * @param {object[]} posts
+ * @param {string} sort
+ * @param {string} search
+ * @param {string} category
+ * @param {string} excludeId
+ * @param {number} maxQty
+ * @param {function()} fetchPosts
+ * @param {function()} fetchPostsByCategory
+ * @param {function()} deletePost
+ * @param {function()} handleSort
+ * @param {object} classes
+*/
 class PostList extends Component {
 &nbsp;
+  static propType = {
+    posts: PropTypes.object,
+    sort: PropTypes.string,
+    search: PropTypes.string,
+    category: PropTypes.string,
+    excludeId: PropTypes.string,
+    maxQty: PropTypes.number,
+    fetchPosts: PropTypes.func.isRequired,
+    fetchPostsByCategory: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
+    handleSort: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
+  };
+&nbsp;
+  /**
+   * @description Fetches all posts or posts by a category as appropriate
+  */
   componentDidMount(){
     const { category, fetchPosts, fetchPostsByCategory } = this.props;
 &nbsp;
@@ -304,6 +408,10 @@ class PostList extends Component {
     }
   }
 &nbsp;
+  /**
+   * @description Fetches posts when component is updated
+   * @param {object} prevProps
+  */
 <span class="fstat-no" title="function not covered" >  co</span>mponentDidUpdate(prevProps){
     const { category, fetchPostsByCategory } = <span class="cstat-no" title="statement not covered" >this.props</span>
     const prevCategory = <span class="cstat-no" title="statement not covered" >prevProps.category</span>
@@ -391,7 +499,7 @@ export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(P
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 08 2018 12:18:21 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 09 2018 17:39:38 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

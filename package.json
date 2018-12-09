@@ -9,13 +9,22 @@
     "readable",
     "react"
   ],
+  "scripts": {
+    "start": "node server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run start\" \"npm run client\"",
+    "test": "npm run test --prefix client -- --coverage",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
   "author": "David Harris",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
+    "clone": "^2.1.1",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
-    "clone": "^2.1.1"
+    "path": "^0.12.7"
   }
 }

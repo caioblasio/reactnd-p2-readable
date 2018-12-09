@@ -35,9 +35,9 @@
         <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">57.89% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>12/20</span>
+        <span class='fraction'>11/19</span>
       </div>
     </div>
   </div>
@@ -150,7 +150,31 @@
 105
 106
 107
-108</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -163,6 +187,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,6 +245,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -236,12 +289,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -261,7 +309,7 @@
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
-&nbsp;
+import PropTypes from 'prop-types';
 import Form from './Form';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -289,12 +337,37 @@ const styles = theme =&gt; ({
   }
 });
 &nbsp;
+/**
+ * @description Component for adding a new post or edit an existing post
+ * @param {object} post
+ * @param {string} postId
+ * @param {string} edit
+ * @param {object[]} categories
+ * @param {function()} fetchPostById
+ * @param {function()} editPost
+ * @param {function()} addPost
+ * @param {object} classes
+*/
 class ManagePost extends Component {
+&nbsp;
+  static propType = {
+    post: PropTypes.object,
+    postId: PropTypes.string,
+    edit: PropTypes.bool,
+    categories: PropTypes.array.isRequired,
+    fetchPostById: PropTypes.func.isRequired,
+    editPost: PropTypes.func.isRequired,
+    addPost: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired
+  };
 &nbsp;
   state = {
     path: ''
   }
 &nbsp;
+  /**
+   * @description Fetches a new post when appropriate for post edit
+  */
   componentDidMount() {
     const { fetchPostById, postId } = this.props;
 &nbsp;
@@ -302,6 +375,10 @@ class ManagePost extends Component {
       fetchPostById(postId)
   }
 &nbsp;
+   /**
+   * @description Handles form submit and dispatches add post or edit post when appropriate. Then, redirect user to post's page
+   * @param {object} post
+  */
   handleSubmit = <span class="fstat-no" title="function not covered" >(p</span>ost) =&gt; {
     const { editPost, addPost, edit } = <span class="cstat-no" title="statement not covered" >this.props;</span>
   
@@ -343,12 +420,7 @@ class ManagePost extends Component {
   }
 }
 &nbsp;
-const mapStateToProps = ({ categories, posts }, { postId }) =&gt; {
-  return {
-    categories,
-    post: posts[postId]
-  }
-}
+const mapStateToProps = ({ categories, posts }, { postId }) =&gt; ({ categories, post: posts[postId] })
 &nbsp;
 const mapDispatchToProps = dispatch =&gt; {
   return {
@@ -370,7 +442,7 @@ export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(M
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 08 2018 12:18:21 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 09 2018 17:39:38 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

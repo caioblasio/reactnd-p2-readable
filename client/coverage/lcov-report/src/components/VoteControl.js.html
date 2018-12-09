@@ -146,7 +146,53 @@
 101
 102
 103
-104</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,7 +215,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -181,6 +226,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -192,9 +241,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -251,18 +307,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-&nbsp;
 import { addVoteToPost } from '../actions/posts';
 import { addVoteToComment } from '../actions/comments';
-&nbsp;
+import { checkValue, saveValue } from '../utils/locaStorage';
+import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import ThumbDown from '@material-ui/icons/ThumbDown';
 &nbsp;
-import { checkValue, saveValue } from '../utils/locaStorage';
-&nbsp;
+/**
+ * @description Vote Control component for a post or comment. Uses local storage to manage the votes
+ * @param {string} id
+ * @param {string} type
+ * @param {number} voteScore
+ * @param {function()} addVoteToPost
+ * @param {function()} addVoteToComment
+*/
 class VoteControl extends Component {
+&nbsp;
+  static propType = {
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    voteScore: PropTypes.number.isRequired,
+    addVoteToPost: PropTypes.func.isRequired,
+    addVoteToComment: PropTypes.func.isRequired
+  };
 &nbsp;
   state = {
     currentVote: checkValue('votes', this.props.id)
@@ -270,9 +340,12 @@ class VoteControl extends Component {
 &nbsp;
   score = this.props.voteScore;
 &nbsp;
+  /**
+   * @description Calls cancel and/or apply vote according to current vote and the newVote provided
+   * @param {string} newVote
+  */
   handleVote = newVote =&gt; {
-    const { currentVote } = this.state
-&nbsp;
+    const { currentVote } = this.state;
     if (currentVote &amp;&amp; currentVote === newVote) {
       this.cancel(newVote)
     } else if (currentVote) {
@@ -283,6 +356,10 @@ class VoteControl extends Component {
     }
   }
 &nbsp;
+  /**
+   * @description Cancel a vote correctly according to the current vote
+   * @param {string} vote
+  */
   cancel = vote =&gt; {
     if (vote === 'upVote') {
       this.handleDispatchVote('downVote')
@@ -294,6 +371,10 @@ class VoteControl extends Component {
     saveValue('votes', this.props.id, null)
   }
 &nbsp;
+  /**
+   * @description Apply a vote
+   * @param {string} vote
+  */
   apply = vote =&gt; {
     saveValue('votes', this.props.id, vote)
     this.handleDispatchVote(vote)
@@ -301,8 +382,11 @@ class VoteControl extends Component {
   }
 &nbsp;
 &nbsp;
+  /**
+   * @description Dispatch vote action to a post or component as appropriate
+   * @param {string} vote
+  */
   handleDispatchVote = vote =&gt; {
-    
     const { id, addVoteToPost, addVoteToComment, type } = this.props;
     vote === 'upVote' ? this.score++ : this.score--;
     const changes = { voteScore: this.score }
@@ -358,7 +442,7 @@ export default connect(null, mapDispatchToProps)(VoteControl);</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 08 2018 12:18:21 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 09 2018 17:39:38 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../prettify.js"></script>

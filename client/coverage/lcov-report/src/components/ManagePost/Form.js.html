@@ -211,7 +211,35 @@
 166
 167
 168
-169</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -242,6 +270,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,16 +299,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">64x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -380,8 +436,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component } from 'react';
-&nbsp;
 import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import MenuItem from '@material-ui/core/MenuItem';
 import Button from '@material-ui/core/Button';
 import uuidv1 from 'uuid/v1';
@@ -404,12 +460,29 @@ const styles = theme =&gt; ({
 &nbsp;
 });
 &nbsp;
+/**
+ * @description Component for adding a component in a post detail page
+ * @param {function()} onSubmit
+ * @param {object[]} categories
+ * @param {object} post
+ * @param {object} classes
+*/
 class Form extends Component {
+&nbsp;
+  static propType = {
+    onSubmit: PropTypes.func.isRequired,
+    categories: PropTypes.array.isRequired,
+    post: PropTypes.object,
+    classes: PropTypes.object.isRequired
+  };
 &nbsp;
   state = this.getInitialState(this.props.post);
 &nbsp;
+  /**
+   * @description Get initial state of the form component according to props that were passed
+   * @param {object} post
+  */
   getInitialState(post) {
-&nbsp;
     const state = post 
     ? {
       title: post.title,
@@ -422,22 +495,33 @@ class Form extends Component {
       author: '',
       category: '',
     }
-&nbsp;
     return state
   }
 &nbsp;
+  /**
+   * @description Handles new receiving of props and updates the form as necessary
+  */
   componentWillReceiveProps = ({ post }) =&gt; {
     this.setState(this.getInitialState(post))
   }
 &nbsp;
+  /**
+   * @description Handles change of text fields
+   * @param {string} name
+   * @param {object} event
+  */
   handleChange = name =&gt; event =&gt; {
     this.setState({
       [name]: event.target.value,
     });
   };
 &nbsp;
-  handleSubmit = (e) =&gt; {
-    e.preventDefault();
+  /**
+   * @description Creates a new post object or use existing and handles form submit
+   * @param {object} event
+  */
+  handleSubmit = (event) =&gt; {
+    event.preventDefault();
     
     const { onSubmit, post } = this.props,
       { title, body, author, category } = this.state
@@ -553,7 +637,7 @@ export default withStyles(styles)(withRouter(Form))</pre></td></tr>
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Dec 08 2018 12:18:21 GMT-0200 (-02)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 09 2018 17:39:38 GMT-0200 (-02)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
