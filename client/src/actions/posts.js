@@ -1,4 +1,4 @@
-import * as ContentAPI from '../utils/contentAPI';
+import * as ContentAPI from '../utils/contentapi';
 import { showLoading, hideLoading } from '../actions/loading';
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';

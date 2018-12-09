@@ -1,4 +1,4 @@
-import { getCategories } from '../utils/contentAPI'
+import { getCategories } from '../utils/contentapi'
 
 export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'
 

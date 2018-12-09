@@ -1,4 +1,4 @@
-import * as ContentAPI from '../utils/contentAPI';
+import * as ContentAPI from '../utils/contentapi';
 
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const EDIT_COMMENT = 'EDIT_COMMENT';
