@@ -1,8 +1,6 @@
 import React from 'react';
-
-import configureStore from 'redux-mock-store'; // Smart components
+import configureStore from 'redux-mock-store';
 import Category from '../../components/Category';
-
 import { testCategories } from '../../__mocks__/mockData';
 import { MemoryRouter } from 'react-router-dom';
 import NotFound from '../../components/NotFound';
